@@ -1,0 +1,59 @@
+@font-face {
+  font-family: Sul Sans;
+  src: url(/SulSansRegular.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal
+}
+
+@font-face {
+  font-family: Sul Sans;
+  src: url(/SulSansBold.woff2) format("woff2");
+  font-weight: 600
+  font-style: normal
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding: 22px 55px !important;
+}
+
+.navbar * {
+  vertical-align: middle !important;
+}
+
+.navbar .links {
+  top: unset !important;
+}
+
+.navbar .logo {
+  width: 195px;
+  height: 36px !important;
+  min-width: unset !important;
+  padding: 5px 15px;
+  margin-right: unset !important;
+}
+
+.navbar .site-name, .nav-link, .repo-link {
+  color: #ff4212 !important;
+  font-family: 'Sul Sans' !important;
+}
+
+.navbar .nav-link, .repo-link {
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  font-size: 14px !important;
+  margin: 0.91em 0;
+}
+
+.navbar .search-box {
+  margin-left: 2rem !important;
+  order: 1;
+  position: relative;
+  top: -3px;
+}
+
+.icon.outbound {
+  display: none;
+}
