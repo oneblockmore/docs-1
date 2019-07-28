@@ -1,0 +1,11 @@
+#!/bin/sh
+
+git diff origin/master --exit-code -s -- **/*.md .vuepress
+if [ $? -ne 0 ]; then
+  git diff HEAD HEAD~1 --exit-code -s -- docs
+  if [ $? -eq 0 ]; then
+    echo "Found a source file newer than docs/. Please run \`vuepress build\`"
+    exit 1
+  fi
+fi
+exit 0
