@@ -53,7 +53,7 @@ test tests::test_paths ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
-Great! Now that the tests pass, build the service for deployment by runing `oasis build`.
+Great! Now that the tests pass, build the service for deployment by running `oasis build`.
 We'll do the deploy in the next step.
 
 ## Integration Test Using the Local Chain
