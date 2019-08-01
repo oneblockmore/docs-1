@@ -28,9 +28,9 @@ pub struct MessageBoard {
 }
 ```
 
-and, on [line 228](https://github.com/oasislabs/oasis-rs/blob/master/examples/messaging/src/lib.rs#L228),  an example of setting the character limit to one: `Some(1)`.
+and, on [line 228](https://github.com/oasislabs/oasis-rs/blob/master/examples/messaging/src/lib.rs#L228), an example of setting the character limit to one: `Some(1)`.
 
-On [line 145](https://github.com/oasislabs/oasis-rs/blob/master/examples/messaging/src/lib.rs#L145) a tuple of optional types are observed in the context of an RPC function signature: `range:  (Option<PostId>, Option<PostId>)`.
+On [line 145](https://github.com/oasislabs/oasis-rs/blob/master/examples/messaging/src/lib.rs#L145) a tuple of optional types are observed in the context of an RPC function signature: `range: (Option<PostId>, Option<PostId>)`.
 
 ### User-defined types
 
@@ -46,8 +46,8 @@ pub struct Message {
 }
 ```
 
-There's no special syntax for this;  the new type is just a Rust struct.
-Like any struct you can add methods and trait implementations using `impl` and `#[derive(..)]`. 
+There's no special syntax for this; the new type is just a Rust struct.
+Like any struct you can add methods and trait implementations using `impl` and `#[derive(..)]`.
 Indeed, we derive `PartialEq` on we `Message` so that we can `assert_eq!` in the tests.
 
 Then, on [line 36](https://github.com/oasislabs/oasis-rs/blob/master/examples/messaging/src/lib.rs#L36) we increase the level of abstraction by creating a `Post` type that contains a stores a list of comments as `Vec<Message>`.
@@ -131,4 +131,4 @@ Well, that's basically all there is to writing blockchain services.
 The only other thing to mention is that there's a wealth of libraries for you to use on [crates.io](https://crates.io), the Cargo registry (c.f. NPM).
 You're now fully equipped to start building on the Oasis platform.
 We look forward to seeing what you create!
-If you need any help, you can check out the [API reference](../api-reference), [best practices guide](/best-practices), and get support from the [community](../community).
+If you need any help, you can check out the [oasis.js API reference](https://oasis-labs-oasis-client.readthedocs-hosted.com/en/latest/) and get support from the [community](https://gitter.im/Oasis-official/Lobby).

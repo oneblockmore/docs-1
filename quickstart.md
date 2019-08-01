@@ -9,9 +9,9 @@ In this guide we will take you through setting up your Oasis dev environment, te
 To run the local Oasis blockchain (`oasis-chain`), you will need a C compiler like`clang` or `gcc`.
 If you're reading these docs, you probably already have one, but if you don't, you can run one of
 
-- `xcode-select --install`
-- `sudo apt-get install build-essential`
-- `sudo yum groupinstall "Development Tools" "Development Libraries"`
+- macOS: `xcode-select --install`
+- Ubuntu/Debian: `sudo apt-get install build-essential`
+- CentOS/Amazon Linux/Fedora: `sudo yum groupinstall "Development Tools" "Development Libraries"`
 
 ### Installing the Oasis toolchain
 
@@ -32,11 +32,11 @@ We're working on automating this!
 
 The test will do the following:
 
-1. Retrieve Hello World! in Slovenian
-2. Attempt to retrieve Hello World! in Samoan, but fail because it doesn't exist
+1. Retrieve "Hello World!" in Slovenian
+2. Attempt to retrieve "Hello World!" in Samoan, but fail because it doesn't exist
 3. Attempt to insert a duplicate greeting (this will fail)
-4. Insert Hello World! in Samoan
-5. Retrieve Hello World! successfully in Samoan
+4. Insert "Hello World!" in Samoan
+5. Retrieve "Hello World!"" successfully in Samoan
 
 You should see the following console output:
 
@@ -53,19 +53,22 @@ test tests::test_paths ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
-Great! Now that the tests pass, build the service for deployment by running `oasis build`.
-We'll do the deploy in the next step.
+Great!
+Now that the tests pass, it's time build the service for deployment and test it on the local chain.
 
 ## Integration Test Using the Local Chain
 
 In this step we will use the Javascript based test in the test directory.
 This script uses [oasis.js](https://github.com/oasislabs/oasis.js) to interact with the local chain or Devnet 2.0.
 
-1. `cd ../app`
-2. Install app dependencies using `npm install` (or `yarn install` if that's more your style)
-3. In a separate terminal, run the local chain using `oasis-chain`
+1. `oasis build`
+2. `cd ../app`
+3. Install app dependencies using `npm install` (or `yarn install` if that's more your style)
+4. In a separate terminal, run the local chain using `oasis-chain`
 
-You can now test on the local chain using `oasis deploy --profile local`. You will see the following output,
+You can now test on the local chain using `oasis test`.
+Note that the `app` tests will run when in a subdirectory of `app`.
+You will see the following output,
 
 ```
  PASS  test/service.spec.ts (5.965s)
@@ -80,6 +83,6 @@ Tests:       3 passed, 3 total
 
 ## Where to go from here?
 
-- Check out the [tutorials](/tutorials)!
+- Check out the [tutorials](/tutorials/ballot)!
 - [Learn Rust!](https://doc.rust-lang.org/book/) (protip: if you use DuckDuckGo, you can search the Rust docs with `!rust <query>`)
 - Browse [crates.io](https://crates.io) for libraries to use in your services

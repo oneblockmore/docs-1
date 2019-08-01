@@ -1,8 +1,11 @@
 # Creating a Secret Ballot
 
-By now, you should know how to create, build, and test an Oasis service using our CLI. If you don't, consider (re)visiting our [Quickstart Guide](/quickstart). Now, we will dive deeper into semantics, learning how to define and implement Oasis service RPCs in Rust. 
+By now, you should know how to create, build, and test an Oasis service using our CLI.
+If you don't, consider (re)visiting our [Quickstart Guide](/quickstart).
+Now, we will dive deeper into semantics, learning how to define and implement Oasis service RPCs in Rust.
 
-We'll do this via the motivating example of a voting service that allows participants to fill out a _secret ballot_ to vote for a candidate of their choice. Because the service runs on the Oasis network, we can be confident that the voting process cannot be rigged and that participants' identity and vote are not revealed either to other participants or to the service itself.
+Let's use the motivating example of a voting service that allows participants to fill out a _secret ballot_ to vote for a candidate of their choice.
+Because the service runs on the Oasis network, we can be confident that the voting process cannot be rigged and that participants' identity and vote are not revealed either to other participants or to the service itself.
 
 **tl;dr:** The code for this example can be found [at this link](https://github.com/oasislabs/tutorials/tree/master/examples/ballot).
 
@@ -24,7 +27,7 @@ oasis init ballot && cd ballot
 You should find yourself in a Git repo that has been populated with the following directory structure:
 
 ```
-ballot 
+ballot
 │
 └───app
 │   │   package.json
@@ -39,18 +42,25 @@ ballot
     └───src
         │   main.rs
 ```
-As you'd expect, `service` is where your Oasis service(s) will live, while `app` is for your client to interact with them. 
+
+As you'd expect, `service` is where your Oasis service(s) will live, while `app` is for your client to interact with them.
 
 Now that you have an overview of your project structure, let's jump right into writing and building your first `service`.
 
 ```
 cd service
 ```
-If you're coming from JavaScript, `Cargo.toml` is the Rust version of `package.json` and `src/main.rs` is akin to `index.js`. For more information, the [Cargo book](https://doc.rust-lang.org/nightly/cargo/) is a fine reference. The [Creating a New Package](https://doc.rust-lang.org/nightly/cargo/guide/creating-a-new-project.html), [Dependencies](https://doc.rust-lang.org/nightly/cargo/guide/dependencies.html), and [Package Layout](https://doc.rust-lang.org/nightly/cargo/guide/project-layout.html) sections are particularly relevant for this tutorial.
+
+If you're coming from JavaScript, `Cargo.toml` is the Rust version of `package.json` and `src/main.rs` is akin to `index.js`.
+For more information, the [Cargo book](https://doc.rust-lang.org/nightly/cargo/) is a fine reference.
+The [Creating a New Package](https://doc.rust-lang.org/nightly/cargo/guide/creating-a-new-project.html), [Dependencies](https://doc.rust-lang.org/nightly/cargo/guide/dependencies.html), and [Package Layout](https://doc.rust-lang.org/nightly/cargo/guide/project-layout.html) sections are particularly relevant for this tutorial.
 
 ## Setting up dependencies
 
-Dependencies are specified in the _package manifest_: `Cargo.toml`. If you open `Cargo.toml`, you'll see a line at the bottom of the file that says [dependencies], which is the syntax for a TOML table called dependencies. Two of the three required dependencies for building your voting service should already be initialized for you by default, and all you need to do is add one for `map_vec`. This should make your dependencies look as follows:
+Dependencies are specified in the _package manifest_: `Cargo.toml`.
+If you open `Cargo.toml`, you'll see a line at the bottom of the file that says [dependencies], which is the syntax for a TOML table called dependencies.
+Two of the three required dependencies for building your voting service should already be initialized for you by default, and all you need to do is add one for `map_vec`.
+This should make your dependencies look as follows:
 
 ```toml
 [dependencies]
@@ -62,6 +72,7 @@ serde = { version = "1.0", features = ["derive"] }
 [`oasis-std`](https://docs.rs/oasis-std) contains a collection of types and utilities that make writing blockchain services more pleasant.
 [`serde`](https://serde.rs) is a SERialization/DEserialization library that's used quite ubiquitously throughout the service and client.
 [`map_vec`](https://docs.rs/map_vec) contains `Map` and `Set` data structures that trade asymptopic complexity for low constant factors; this tends to be more efficient when writing simple services.
+You can use Rust's `Hash` and `BTree` variants, if you'd prefer.
 
 Those are the only two runtime dependencies that you need to specify.
 You'll also want to note the following dev (test) dependency:
@@ -77,7 +88,9 @@ oasis-test = "0.2"
 
 ### From Cargo to Cargo Cult
 
-Let's start with some scaffolding. If you pop open `main.rs` , you'll notice that a service named `Ballot` has already been initialized for you with some barebones starter code. We'll now analyze this service piece-by-piece and extend it to act as the voting service we envision it to be.
+Let's start with some scaffolding.
+If you pop open `main.rs`, you'll notice that a service named `Ballot` has already been initialized for you with some bare-bones starter code.
+We'll now analyze this service piece-by-piece and extend it to act as the voting service we envision it to be.
 
 The top of our Oasis services will always contain relevant imports. By default, we only have one:
 
@@ -85,12 +98,14 @@ The top of our Oasis services will always contain relevant imports. By default, 
 use oasis_std::Context;
 ```
 
-[`Context`](https://docs.rs/oasis-std/0.1.0/oasis-std/exe/struct.Context.html) is a construct that you'll need in mostly every service, and serves as an object that we'll use to keep track of the -- you guessed it -- context of invoked service methods (e.g. the method caller). Let's also include the `Address`  construct from `oasis_std`, which we will later use to verify ballot participants' identities, and the `map_vec` object we decided we needed above. Now we should have two imports:
+[`Context`](https://docs.rs/oasis-std/0.1.0/oasis-std/exe/struct.Context.html) is a construct that you'll need in mostly every service, and serves as an object that we'll use to keep track of the -- you guessed it -- context of invoked service methods (e.g. the method caller).
+Let's also include the `Address` construct from `oasis_std`, which we will later use to verify ballot participants' identities, and the `map_vec` object we decided we needed above. Now we should have two imports:
 
 ```rust
 use map_vec::Map;
 use oasis_std::{Address, Context};
 ```
+
 which covers everything we'll need to use for building our voting service.
 
 ### Defining service state
@@ -198,6 +213,7 @@ pub fn voting_open(&self, _ctx: &Context) -> bool {
     self.accepting_votes
 }
 ```
+
 These are similar to the constructor but a bit different. In non-constructor RPC methods, we have access to the state of the service, as provided by a reference to `self`. We can pick the items out of `self` that we want and return them to the user. Note that _all_ RPC methods -- even those that do not use `self` and `Context` -- receive these two arguments, but you are free to ignore them.
 
 ### Mutating state
@@ -206,9 +222,8 @@ Now to implement the core of the ballot service. We'll want to support functiona
 
 ```rust
 /// Cast a vote for a candidate.
-/// candidate_num is the index of the chosen candidate in Ballot::candidates.
-/// If you have already voted, this will change your vote to the new candidate.
-/// Voting for an invalid candidate or after the ballot has closed will return an Err.
+/// `candidate_num` is the index of the chosen candidate in `self.candidates.`
+/// You can change your vote as long as the ballot is still open.
 pub fn vote(&mut self, ctx: &Context, candidate_num: u32) -> Result<()> {
     if !self.accepting_votes {
         return Err("Voting is closed.".to_string());
@@ -318,7 +333,7 @@ mod tests {
     use super::*;
 
     /// Creates a new account and a Context with the new account as the sender.
-    fn create_account() -> (Address, Context) {
+    fn create_account_ctx() -> (Address, Context) {
         let addr = oasis_test::create_account(0 /* initial balance */);
         let ctx = Context::default().with_sender(addr).with_gas(100_000);
         (addr, ctx)
@@ -326,8 +341,8 @@ mod tests {
 
     #[test]
     fn functionality() {
-        let (_admin, admin_ctx) = create_account();
-        let (_voter, voter_ctx) = create_account();
+        let (_admin, admin_ctx) = create_account_ctx();
+        let (_voter, voter_ctx) = create_account_ctx();
 
         let description = "What's for dinner?";
         let candidates = vec!["beef".to_string(), "yogurt".to_string()];
@@ -380,7 +395,10 @@ fn main() {
     oasis_std::service!(Ballot);
 }
 ```
-This Rust macro automatically builds your service when you run `oasis build` from within `service` and creates a deployable Wasm service for you in `target/service/ballot.wasm`. Great! Now all you have left to learn is how to deploy this service to the Oasis platform and set up a client to interact with it.
+
+This Rust macro automatically builds your service when you run `oasis build` from within `service` and creates a deployable Wasm service for you in `target/service/ballot.wasm`.
+Great!
+Now all you have left to learn is how to deploy this service to the Oasis platform and set up a client to interact with it.
 
 ## Onward to (messages of) victory!
 
