@@ -9,47 +9,44 @@ fs.stat('.git/hooks/pre-push', function(err, stats) {
       process.exit(1);
     }
   });
-})
+});
 
 module.exports = {
   title: 'Documentation',
   description: 'Oasis Developer Documentation',
-  head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
-  ],
+  head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
   dest: 'docs',
   serviceWorker: true,
   themeConfig: {
     logo: '/logo.png',
     nav: [
-      { text: 'Home', link: 'https://oasislabs.com' },
-      { text: 'Dashboard', link: 'https://dashboard.oasiscloud.io' },
+      {text: 'Home', link: 'https://oasislabs.com'},
+      {text: 'Dashboard', link: 'https://dashboard.oasiscloud.io'},
     ],
     sidebar: [
       '/overview',
       '/quickstart',
       {
         title: 'Tutorials',
+        collapsable: false,
         children: [
           ['/tutorials/ballot', 'Beginner: Secret Ballot'],
           ['/tutorials/messaging', 'Intermediate: Private Chat'],
-        ]
+        ],
       },
     ],
-
+    displayAllHeaders: true,
     repo: 'oasislabs',
     docsRepo: 'oasislabs/docs',
     docsBranch: 'master',
     editLinks: true,
-    editLinkText: 'Help us improve this page!'
+    editLinkText: 'Help us improve this page!',
   },
   chainWebpack(config, isServer) {
-    config
-      .plugin('cname')
-      .use(function() {
-        return function() {
-          fs.writeFile('docs/CNAME', 'docs.oasis.dev\n', function(){});
-        }
-      })
-  }
-}
+    config.plugin('cname').use(function() {
+      return function() {
+        fs.writeFile('docs/CNAME', 'docs.oasis.dev\n', function() {});
+      };
+    });
+  },
+};
