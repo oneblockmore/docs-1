@@ -27,7 +27,7 @@ We're working on automating this!
 ## Unit Test the "Hello World" Service Using Cargo
 
 1. `git clone https://github.com/oasislabs/tutorials`
-2. `cd oasis-tutorials/hello-world/service`
+2. `cd tutorials/hello-world/service`
 3. `oasis test -- --nocapture`
 
 The test will do the following:
