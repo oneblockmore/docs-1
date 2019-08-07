@@ -4,25 +4,13 @@ In this guide we will take you through setting up your Oasis dev environment, te
 
 ## Set Up the Oasis SDK
 
-### Prerequisites
+### Install the Oasis Toolchain
 
-To run the local Oasis blockchain (`oasis-chain`), you will need a C compiler like`clang` or `gcc`.
-If you're reading these docs, you probably already have one, but if you don't, you can run one of
+```
+curl --proto '=https' --tlsv1.2 -sSL https://get.oasis.dev | python
+```
 
-- macOS: `xcode-select --install`
-- Ubuntu/Debian: `sudo apt-get install build-essential`
-- CentOS/Amazon Linux/Fedora: `sudo yum groupinstall "Development Tools" "Development Libraries"`
-
-### Installing the Oasis toolchain
-
-1. [Install Rust using rustup](https://rustup.rs)
-2. `rustup default nightly-2019-07-25`
-3. `rustup target add wasm32-wasi`
-4. `cargo install oasis-cli oasis-build oasis-chain`
-5. Ensure that the `$HOME/.cargo/bin` is in your `$PATH`
-
-Note: If you change your Rust toolchain to another nightly, you'll need to `cargo install --force oasis-build`.
-We're working on automating this!
+Alternatively, pipe into `python - --help` to see installation options.
 
 ## Unit Test the "Hello World" Service Using Cargo
 
@@ -83,9 +71,9 @@ Tests:       3 passed, 3 total
 ## Integration Test Using Devnet 2.0
 
 1. Login to the [Oasis developer dashboard](https://dashboard.oasiscloud.io) and visit `My Account`. Navigate to the `Payments` tab
-_Note:_ If you are a first-time user, you may be prompted to generate an Oasis-managed wallet, which you should do. Your wallet is what serves as your identity and enables you to interact with Oasis services.
+   _Note:_ If you are a first-time user, you may be prompted to generate an Oasis-managed wallet, which you should do. Your wallet is what serves as your identity and enables you to interact with Oasis services.
 2. Make sure you are in a secure location, and then `Click to reveal`. This will reveal your _private key_, which is used to access your wallet.
-You must never lose your private key nor share it with anyone unless you want to lose control of your wallet.
+   You must never lose your private key nor share it with anyone unless you want to lose control of your wallet.
 3. Set your private key for use by the client using `oasis config profile.default.private_key "<private key>"`
 
 ## Where to go from here?
