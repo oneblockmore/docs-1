@@ -68,13 +68,29 @@ Test Suites: 1 passed, 1 total
 Tests:       3 passed, 3 total
 ```
 
-## Integration Test Using Devnet 2.0
+## Deploy on Devnet 2.0
 
 1. Login to the [Oasis developer dashboard](https://dashboard.oasiscloud.io) and visit `My Account`. Navigate to the `Payments` tab
-   _Note:_ If you are a first-time user, you may be prompted to generate an Oasis-managed wallet, which you should do. Your wallet is what serves as your identity and enables you to interact with Oasis services.
-2. Make sure you are in a secure location, and then `Click to reveal`. This will reveal your _private key_, which is used to access your wallet.
-   You must never lose your private key nor share it with anyone unless you want to lose control of your wallet.
-3. Set your private key for use by the client using `oasis config profile.default.private_key "<private key>"`
+   _Note:_ If you are a first-time user, you may be prompted to generate an Oasis-managed wallet, which you should do.
+   Your wallet is what serves as your identity and enables you to interact with Oasis services.
+2. Make sure you are in a secure location, and then *Click to reveal*.  
+   This will reveal your private key, which is used to control your wallet.
+   You must never lose your private key nor share it with anyone—unless, of course, you want to lose control of your wallet!
+3. Give your local toolchain access to your wallet by running
+   ```
+   oasis config profile.default.private_key "<private key>"
+   ```
+
+You can now deploy to Devnet 2.0, using `oasis deploy`.
+When you run that command, with any luck, you'll see something like the following:
+
+```
+   Deploying hello-world
+         ...
+    Deployed HelloWorld at 0xf8b476862dd4bcaaabb988aa5a459d95e319ac0e
+```
+
+You can now point an app at `0xf8b476862dd4bcaaabb988aa5a459d95e319ac0e` using the client's [Service.at](https://oasis-labs-oasis-client.readthedocs-hosted.com/en/latest/service.html#service-at) constructor and interact with the spiffy decentralized backend you just deployed!
 
 ## Where to go from here?
 
