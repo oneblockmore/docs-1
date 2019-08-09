@@ -12,7 +12,7 @@ fs.stat('.git/hooks/pre-push', function(err, stats) {
 });
 
 module.exports = {
-  title: 'Documentation',
+  title: 'Oasis Dev Docs',
   description: 'Oasis Developer Documentation',
   head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
   dest: 'docs',

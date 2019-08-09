@@ -1,4 +1,4 @@
-Welcome to the Oasis Labs developer documentation!
+<span style="display:block;font-size:1.5em">Welcome to the Oasis developer documentation!</span>
 
 ## What's New
 
