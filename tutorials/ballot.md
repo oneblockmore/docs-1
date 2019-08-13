@@ -64,7 +64,7 @@ This should make your dependencies look as follows:
 
 ```toml
 [dependencies]
-map_vec = "0.2"
+map_vec = { version = "0.2", features = ["serde"] }
 oasis-std = "0.2"
 serde = { version = "1.0", features = ["derive"] }
 ```

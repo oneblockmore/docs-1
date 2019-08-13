@@ -79,7 +79,7 @@ This is the first step in a series of releases that will turn the dashboard into
 
 In this release we are deprecating web3c.
 As a result, Solidity contracts will no longer have the same confidentiality guarantees going forward.
-Otherwise, all Solidity contracts will be non-confidential while continuing to benefit from better performance compared to other Solidity platforms.
+In other words, all Solidity contracts will be non-confidential while continuing to benefit from better performance compared to other Solidity platforms.
 Existing services and clients using web3 will continue to work in Devnet 2.0 against the web3 gateway.
 For future Ethereum contracts, we recommend either web3.js or ether.js.
 
@@ -94,7 +94,7 @@ For future Ethereum contracts, we recommend either web3.js or ether.js.
 
 ##### July
 
-* Beta Release in July
+* Beta Release in July.
 * Provide early feedback on this latest release.
 * Use the new toolchain to build and deploy services.
 
@@ -107,7 +107,7 @@ For future Ethereum contracts, we recommend either web3.js or ether.js.
 Legacy contracts are served through the old Dashboard. A link will be available from the main Dashboard for up to 2 months.
 During this time, contracts deployed on Devnet 1.0 and their state will remain accessible.
 We encourage developers to migrate their contracts to our new platform in this time
-Devnet 2.0 will have fresh state and state maintained in Devnet 1.0 is non-portable
+Devnet 2.0 will have fresh state and state maintained in Devnet 1.0 is non-portable.
 
 
 ##### September 30
@@ -128,7 +128,7 @@ If you have a specific need for your use-case, please send us a note at [devrel@
 
 ### Enhancements to the Local Developer Toolchain
 
-The local chain enables testing of services with state. We have a number of additions planned for the future including,
+The local chain enables testing of services with state. We have a number of additions planned for the future including:
 
 * more precise cost profiling of services
 * enhancements to measure additional cost for confidential services
@@ -136,17 +136,17 @@ The local chain enables testing of services with state. We have a number of addi
 ### Wallet Management
 
 Current end-user flows in blockchain have been clunky and limited because of existing wallets. Typically, users end up self-authenticating to the blockchain and paying for usage by signing the transaction with a single wallet key.
-e are exploring new models that help developers build better end-user engagement.
+We are exploring new models that help developers build better end-user engagement.
 
-We're working on updates to the oasis-gateway, where the identity for the end-user would be separated from the identity for transaction payment.
-his allows hybrid models where different wallets can be used to identify the end user and to pay for the transaction.
+We are working on updates to the oasis-gateway, where the identity for the end-user would be separated from the identity for transaction payment.
+This allows hybrid models where different wallets can be used to identify the end user and to pay for the transaction.
 
 Stay tuned for more on this feature soon.
 
 ### Launching a Public Testnet
 
 Over the course of the next two quarters we expect to deploy a Public Testnet and allow more developers to deploy nodes on our network.
-ore on this to come in future releases and blog posts.
+More on this to come in future releases and blog posts.
 
 ### Feedback
 Lastly, our priorities are driven by developer needs and would love to hear from you.
