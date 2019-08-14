@@ -14,7 +14,24 @@ fs.stat('.git/hooks/pre-push', function(err, stats) {
 module.exports = {
   title: 'Oasis Dev Docs',
   description: 'Oasis Developer Documentation',
-  head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
+  head: [
+    ['link', {rel: 'icon', href: '/favicon.ico'}],
+    [
+      'script',
+      {
+        async: 'async',
+        src: 'https://www.googletagmanager.com/gtag/js?id=UA-116576458-1',
+      },
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+       gtag('config', 'UA-116576458-2');`,
+    ],
+  ],
   dest: 'docs',
   serviceWorker: true,
   themeConfig: {
