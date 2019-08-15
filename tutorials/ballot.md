@@ -167,14 +167,14 @@ Here's the constructor for a `Ballot`.
 
 ```rust
 pub fn new(ctx: &Context, description: String, candidates: Vec<String>) -> Self {
-    Ok(Self {
+    Self {
         description,
         tally: vec![0; candidates.len()],
         candidates,
         accepting_votes: true,
         admin: ctx.sender(),
         voters: Map::new(),
-    })
+    }
 }
 ```
 
