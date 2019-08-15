@@ -1,32 +1,22 @@
 name: vuepress
-
 on:
-  pull_request:
+  push:
     branches:
       - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: vuepress build
-      run: |
-        npm install -g vuepress
-        vuepress build
+        node-version: 12.x
+    - run: npx vuepress build
     - name: commit docs
       run: |
-        git config --global user.name "ryscheng-bot"
-        git config --global user.email "ryscheng-bot@oasislabs.com"
-        git add docs/
-        git commit -m "Build docs"
+        git config --global user.name "nhynes"
+        git config --global user.email "nhynes@oasislabs.com"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/oasislabs/docs.git
+        git commit -am "Update docs/"
+        git push origin HEAD:master

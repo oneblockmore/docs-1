@@ -81,7 +81,7 @@ Tests:       3 passed, 3 total
    oasis config profile.default.private_key "<private key>"
    ```
 
-You can now deploy to Devnet 2.0, using `oasis deploy`.
+You can now deploy your service to Devnet 2.0, using `oasis deploy`.
 When you run that command, with any luck, you'll see something like the following:
 
 ```
