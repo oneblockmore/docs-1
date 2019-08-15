@@ -17,6 +17,9 @@ jobs:
       run: |
         git config --global user.name "nhynes"
         git config --global user.email "nhynes@oasislabs.com"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/oasislabs/docs.git
-        git commit -am "Update docs/"
-        git push origin HEAD:master
+        cd .vuepress/dist
+        git init
+        git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/oasislabs/docs.git
+        git add .
+        git commit -m "Update docs"
+        git push origin HEAD:gh-pages -f
