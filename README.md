@@ -19,7 +19,7 @@ Here’s a summary of what’s changing:
 | Solidity | Ethereum standard | Ethereum standard |
 | Rust | – | oasis-rs v0.2 |
 | Local dev tools | contract-kit, Truffle | oasis-cli |
-| Deployment tools | Web3 gatway | oasis-gateway |
+| Deployment tools | Web3 gateway | oasis-gateway |
 | Platform credits | Faucet | Auto-funding via<br>Oasis Dashboard |
 | Dashboard | &bull; External block explorer<br>&bull; Per-contract analytics<br>&bull; Google SSO | &bull; Oasis Explorer<br>&bull; Project-wide analytics<br>&bull; SSO with Google,<br>&nbsp;&nbsp;&nbsp;Github, and WeChat |
 
