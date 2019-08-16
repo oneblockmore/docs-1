@@ -36,7 +36,9 @@ ballot
 │   └───src
 │   │   │   index.ts
 │   └───test
-│       │   service.spec.ts
+│   |   │   service.spec.ts
+|   └───scripts
+|       |   deploy_service.js
 └───service
     │   Cargo.toml
     └───src
@@ -58,7 +60,7 @@ The [Creating a New Package](https://doc.rust-lang.org/nightly/cargo/guide/creat
 ## Setting up dependencies
 
 Dependencies are specified in the _package manifest_: `Cargo.toml`.
-If you open `Cargo.toml`, you'll see a line at the bottom of the file that says [dependencies], which is the syntax for a TOML table called dependencies.
+If you open `Cargo.toml`, you'll see a line at the bottom of the file that says `[dependencies]`, which is the syntax for a TOML table called dependencies.
 Two of the three required dependencies for building your voting service should already be initialized for you by default, and all you need to do is add one for `map_vec`.
 This should make your dependencies look as follows:
 
@@ -92,13 +94,13 @@ Let's start with some scaffolding.
 If you pop open `main.rs`, you'll notice that a service named `Ballot` has already been initialized for you with some bare-bones starter code.
 We'll now analyze this service piece-by-piece and extend it to act as the voting service we envision it to be.
 
-The top of our Oasis services will always contain relevant imports. By default, we only have one:
+The top of our Oasis services contain relevant imports. By default, we only have one:
 
 ```rust
 use oasis_std::Context;
 ```
 
-[`Context`](https://docs.rs/oasis-std/0.1.0/oasis-std/exe/struct.Context.html) is a construct that you'll need in mostly every service, and serves as an object that we'll use to keep track of the -- you guessed it -- context of invoked service methods (e.g. the method caller).
+[`Context`](https://docs.rs/oasis-std/latest/oasis_std/exe/struct.Context.html) is a construct that you'll need in mostly every service, and serves as an object that we'll use to keep track of the -- you guessed it -- context of invoked service methods (e.g. the method caller).
 Let's also include the `Address` construct from `oasis_std`, which we will later use to verify ballot participants' identities, and the `map_vec` object we decided we needed above. Now we should have two imports:
 
 ```rust
@@ -381,7 +383,7 @@ When testing, you can explicitly set the `sender` (the method invoker), but this
 Testing accounts are created using `oasis_test::create_account`.
 
 You can now run the test using `oasis test`.
-(protip: use `oasis test -- --nocapture` to pass through stdout and stderr).
+(Protip: use `oasis test -- --nocapture` to pass through stdout and stderr.)
 This will run your tests using the blockchain simulator in `oasis-test`.
 If all goes well, you should see your test pass.
 Okay, so maybe there was no bug, but at least you now know how to test your service!
