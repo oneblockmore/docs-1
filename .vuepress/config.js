@@ -48,9 +48,10 @@ module.exports = {
     editLinkText: 'Help us improve this page!',
   },
   chainWebpack(config, isServer) {
-    config.plugin('cname').use(function() {
+    config.plugin('extras').use(function() {
       return function() {
         fs.writeFile('.vuepress/dist/CNAME', 'docs.oasis.dev\n', function() {});
+        fs.writeFile('.vuepress/dist/.nojekyll', '', function() {}); // thx github
       };
     });
   },
