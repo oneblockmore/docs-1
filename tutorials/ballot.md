@@ -369,7 +369,7 @@ mod tests {
         // Votes can't be cast after ballot has closed.
         ballot.vote(&admin_ctx, 0).unwrap_err();
 
-        assert_eq!(ballot.voting_open(&voter_ctx).unwrap(), false);
+        assert_eq!(ballot.voting_open(&voter_ctx), false);
         assert_eq!(ballot.winner(&voter_ctx).unwrap(), 1);
         assert_eq!(ballot.results(&voter_ctx).unwrap(), vec![0, 2]);
     }

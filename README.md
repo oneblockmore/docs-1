@@ -41,7 +41,7 @@ We are introducing Oasis Client SDK and Oasis Gateway to simplify interacting wi
 #### Write Services Using Rust
 
 With the new SDK, developers will be able to use [oasis-rs](https://github.com/oasislabs/oasis-rs) to write and test their contracts using the Rust toolchain.
-oasis-rs hides mostly hides blockchain specific programming patterns, so that developers can focus on rapid, safe application development.
+oasis-rs mostly hides blockchain specific programming patterns, so that developers can focus on rapid, safe application development.
 
 #### Build Apps Using Oasis.js
 
@@ -124,7 +124,7 @@ Here are a few things that are on our priority list to drive this goal.
 #### Additional Language Support
 
 With the change to WASI for the system interface in our WASM runtime, we have the ability to support languages that can be compiled to WASI.
-his opens the possibility to support languages like C, C++, JavaScript, and Go.
+This opens the possibility to support languages like C, C++, JavaScript, and Go.
 If you have a specific need for your use-case, please send us a note at [devrel@oasislabs.com](mailto:devrel@oasislabs.com) to help us prioritize.
 
 ### Enhancements to the Local Developer Toolchain
@@ -140,7 +140,7 @@ Current end-user flows in blockchain have been clunky and limited because of exi
 We are exploring new models that help developers build better end-user engagement.
 
 We are working on updates to the oasis-gateway, where the identity for the end-user would be separated from the identity for transaction payment.
-This allows hybrid models where different wallets can be used to identify the end user and to pay for the transaction.
+This allows hybrid models where different wallets can be used to identify the end-user and to pay for the transaction.
 
 Stay tuned for more on this feature soon.
 
