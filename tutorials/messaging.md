@@ -48,7 +48,7 @@ pub struct Message {
 
 There's no special syntax for this; the new type is just a Rust struct.
 Like any struct you can add methods and trait implementations using `impl` and `#[derive(..)]`.
-Indeed, we derive `PartialEq` on we `Message` so that we can `assert_eq!` in the tests.
+Indeed, we derive `PartialEq` on `Message` so that we can `assert_eq!` in the tests.
 
 Then, on [line 33](https://github.com/oasislabs/oasis-rs/blob/master/examples/messaging/src/main.rs#L33) we increase the level of abstraction by creating a `Post` type that stores a list of comments as `Vec<Message>`.
 
