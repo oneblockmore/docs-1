@@ -4,8 +4,8 @@ As an operator of a Node on the Oasis Network, it is suggested that you have an
 understanding of the system architecture of the Oasis Network. Here we will
 provide a high level overview of the Oasis Network's architecture. This overview
 is used to provide enough guidance to be useful for the purposes of getting
-started as a Node Operator. In the future, our blockchain paper, which contains
-much more in-depth information, will be made available.
+started as a Node Operator. For more information, see
+[our whitepaper](https://www.oasislabs.com/whitepaper).
 
 ## Modular Architecture
 
@@ -34,5 +34,5 @@ The Oasis Network uses 3 main protocols for communication:
 
 Confidentiality is achieved in the Oasis Network by relying on trusted execution
 environments (TEEs) to secure the execution of any given smart contract.
-Initially, the Oasis Network will utilize Intel SGX. As more TEE technologies
-mature, we expect to support more than TEEs than Intel SGX.
+Initially, the Oasis Network will utilize [Intel SGX](https://software.intel.com/en-us/sgx).
+As more TEE technologies mature, we expect to support more than TEEs than Intel SGX.
