@@ -12,14 +12,19 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: npx vuepress build
-    - name: commit docs
+    - run: npx prettier --write --trailing-comma=all --single-quote src/.vuepress/config.js
+    - name: build docs
       run: |
         git config --global user.name "nhynes"
         git config --global user.email "nhynes@oasislabs.com"
+        cd src
+        npx vuepress build
         cd .vuepress/dist
         git init
         git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/oasislabs/docs.git
+        git checkout -b gh-pages
         git add .
         git commit -m "Update docs"
-        git push origin HEAD:gh-pages -f
+        git fetch origin gh-pages
+        git rebase origin/gh-pages -X ours
+        git push -u origin gh-pages
