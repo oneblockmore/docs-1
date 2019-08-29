@@ -3,11 +3,12 @@
 In this tutorial we will create a private, uncensorable messaging service.
 This tutorial demonstrates intermediate concepts: events and composed types.
 
+**tl;dr:** The code for this example can be found [here](https://github.com/oasislabs/tutorials/tree/master/message-board).
+
 ## Prerequisites
 
 This tutorial assumes that you're already familiar with the concepts presented in the [previous tutorial](../ballot-tutorial).
 As such, this won't be a step-by-step tutorial, but rather more of a sightseeing tour.
-The full example can be found [here](https://github.com/oasislabs/oasis-rs/tree/master/examples/messaging).
 
 ## Optional and User-Defined Types
 

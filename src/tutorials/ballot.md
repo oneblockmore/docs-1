@@ -7,7 +7,7 @@ Now, we will dive deeper into semantics, learning how to define and implement Oa
 Let's use the motivating example of a voting service that allows participants to fill out a _secret ballot_ to vote for a candidate of their choice.
 Because the service runs on the Oasis network, we can be confident that the voting process cannot be rigged and that participants' identity and vote are not revealed either to other participants or to the service itself.
 
-**tl;dr:** The code for this example can be found [at this link](https://github.com/oasislabs/tutorials/tree/master/ballot).
+**tl;dr:** The code for this example can be found [here](https://github.com/oasislabs/tutorials/tree/master/ballot).
 
 ## Prerequisites
 
