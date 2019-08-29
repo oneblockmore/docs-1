@@ -19,12 +19,11 @@ jobs:
         git config --global user.email "nhynes@oasislabs.com"
         cd src
         npx vuepress build
-        cd .vuepress/dist
-        git init
-        git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/oasislabs/docs.git
-        git checkout -b gh-pages
-        git add .
+        cd .vuepress
+        git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/oasislabs/docs.git --branch gh-pages --depth 1
+        rm -rf docs/*
+        mv dist/* docs
+        cd docs
+        git add -A
         git commit -m "Update docs"
-        git fetch origin gh-pages
-        git rebase origin/gh-pages -X ours
-        git push -u origin gh-pages
+        git push

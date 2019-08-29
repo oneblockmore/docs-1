@@ -1,67 +1,67 @@
-const fs = require("fs");
+const fs = require('fs');
 
 module.exports = {
-  title: "Oasis Dev Docs",
-  description: "Oasis Developer Documentation",
+  title: 'Oasis Dev Docs',
+  description: 'Oasis Developer Documentation',
   head: [
-    ["link", { rel: "icon", href: "/favicon.ico" }],
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
     [
-      "script",
+      'script',
       {
-        async: "async",
-        src: "https://www.googletagmanager.com/gtag/js?id=UA-116576458-1"
-      }
+        async: 'async',
+        src: 'https://www.googletagmanager.com/gtag/js?id=UA-116576458-1',
+      },
     ],
     [
-      "script",
+      'script',
       {},
       `window.dataLayer = window.dataLayer || [];
        function gtag(){dataLayer.push(arguments);}
        gtag('js', new Date());
-       gtag('config', 'UA-116576458-2');`
-    ]
+       gtag('config', 'UA-116576458-2');`,
+    ],
   ],
   serviceWorker: true,
   themeConfig: {
-    logo: "/logo.png",
+    logo: '/logo.svg',
     nav: [
-      { text: "Home", link: "https://oasislabs.com" },
-      { text: "Dashboard", link: "https://dashboard.oasiscloud.io" }
+      { text: 'Home', link: 'https://oasislabs.com' },
+      { text: 'Dashboard', link: 'https://dashboard.oasiscloud.io' },
     ],
     sidebar: [
-      "/overview",
-      "/quickstart",
+      '/overview',
+      '/quickstart',
       {
-        title: "Tutorials",
+        title: 'Tutorials',
         collapsable: false,
         children: [
-          ["/tutorials/ballot", "Beginner: Secret Ballot"],
-          ["/tutorials/messaging", "Intermediate: Private Chat"]
-        ]
+          ['/tutorials/ballot', 'Beginner: Secret Ballot'],
+          ['/tutorials/messaging', 'Intermediate: Private Chat'],
+        ],
       },
       {
-        title: "Operator Docs",
+        title: 'Operator Docs',
         collapsable: true,
         children: [
-          ["/operators/overview", "Node Operator Overview"],
-          ["/operators/architectural-overview", "Architectural Overview"],
-          ["/operators/hardware-requirements", "Hardware Requirements"]
-        ]
-      }
+          ['/operators/overview', 'Node Operator Overview'],
+          ['/operators/architectural-overview', 'Architectural Overview'],
+          ['/operators/hardware-requirements', 'Hardware Requirements'],
+        ],
+      },
     ],
     displayAllHeaders: true,
-    repo: "oasislabs",
-    docsRepo: "oasislabs/docs",
-    docsBranch: "master",
+    repo: 'oasislabs',
+    docsRepo: 'oasislabs/docs',
+    docsBranch: 'master',
     editLinks: true,
-    editLinkText: "Help us improve this page!"
+    editLinkText: 'Help us improve this page!',
   },
   chainWebpack(config, isServer) {
-    config.plugin("extraFiles").use(function() {
+    config.plugin('extraFiles').use(function() {
       return function() {
-        fs.writeFile(".vuepress/dist/CNAME", "docs.oasis.dev\n", function() {});
-        fs.writeFile(".vuepress/dist/.nojekyll", "", function() {}); // thx github
+        fs.writeFile('.vuepress/dist/CNAME', 'docs.oasis.dev\n', function() {});
+        fs.writeFile('.vuepress/dist/.nojekyll', '', function() {}); // thx github
       };
     });
-  }
+  },
 };
