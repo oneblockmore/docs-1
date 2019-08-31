@@ -40,7 +40,7 @@ We are introducing Oasis Client SDK and Oasis Gateway to simplify interacting wi
 #### Write Services Using Rust
 
 With the new SDK, developers will be able to use [oasis-rs](https://github.com/oasislabs/oasis-rs) to write and test their contracts using the Rust toolchain.
-oasis-rs hides mostly hides blockchain specific programming patterns, so that developers can focus on rapid, safe application development.
+oasis-rs hides blockchain specific programming patterns, so that developers can focus on rapid, safe application development.
 
 #### Build Apps Using Oasis.js
 
