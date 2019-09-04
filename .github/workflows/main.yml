@@ -13,13 +13,18 @@ jobs:
       with:
         node-version: 12.x
     - run: npx prettier --write --trailing-comma=all --single-quote src/.vuepress/config.js
-    - name: build docs
+    - name: Build docs
+      run: cd src && npx vuepress build
+    - name: Fix edit links
+      run: |
+        sed -i -e 's?/docs/edit/master/?/docs/edit/master/src/?g' src/.vuepress/dist/*/*.html
+        ls -R src/.vuepress/dist
+        find src/.vuepress/dist -type f -exec fgrep "docs/edit/master" -C 0 {} \;
+    - name: Update docs
       run: |
         git config --global user.name "nhynes"
         git config --global user.email "nhynes@oasislabs.com"
-        cd src
-        npx vuepress build
-        cd .vuepress
+        cd src/.vuepress
         git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/oasislabs/docs.git --branch gh-pages --depth 1
         rm -rf docs/*
         mv dist/* docs
