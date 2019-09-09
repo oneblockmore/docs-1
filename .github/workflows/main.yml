@@ -32,3 +32,10 @@ jobs:
         git add -A
         git commit -m "Update docs"
         git push
+    - name: gh-pages build
+      run: |
+        curl -sS \
+          -H "Authorization: token ${{ secrets.HTTP_API_TOKEN }}" \
+          -H "Accept: application/vnd.github.mister-fantastic-preview+json" \
+          -X POST \
+          "https://api.github.com/repos/oasislabs/docs/pages/builds"
