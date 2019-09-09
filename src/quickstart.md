@@ -51,7 +51,7 @@ This script uses [oasis.js](https://github.com/oasislabs/oasis.js) to interact w
 
 1. `oasis build`
 2. `cd ../app`
-3. Install app dependencies using `npm install` (or `yarn install` if that's more your style)
+3. Install app dependencies using `oasis build`
 4. In a separate terminal, run the local chain using `oasis chain`
 
 You can now test on the local chain using `oasis test`.

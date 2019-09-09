@@ -7,7 +7,7 @@ Now, we will dive deeper into semantics, learning how to define and implement Oa
 Let's use the motivating example of a voting service that allows participants to fill out a _secret ballot_ to vote for a candidate of their choice.
 Because the service runs on the Oasis network, we can be confident that the voting process cannot be rigged and that participants' identity and vote are not revealed either to other participants or to the service itself.
 
-**tl;dr:** The code for this example can be found [at this link](https://github.com/oasislabs/tutorials/tree/master/ballot).
+**tl;dr:** The code for this example can be found [here](https://github.com/oasislabs/tutorials/tree/master/ballot).
 
 ## Prerequisites
 
@@ -399,8 +399,201 @@ fn main() {
 ```
 
 This Rust macro automatically builds your service when you run `oasis build` from within `service` and creates a deployable Wasm service for you in `target/service/ballot.wasm`.
-Great!
-Now all you have left to learn is how to deploy this service to the Oasis platform and set up a client to interact with it.
+You can now use this service in the same manner as our quickstart guide, by [running
+a deploy test with our client](https://docs.oasis.dev/quickstart.html#integration-test-using-the-local-chain).
+
+If you're feeling more adventurous and want to see how to build out the frontend for your application, forge onwards to the next section. Otherwise, feel free to [skip ahead](#onward-to-messages-of-victory).
+
+## The Client Side
+
+Ok, so now you have an Oasis service built and ready to deploy.
+How can you turn this into a living, breathing application with which your users can interact?
+Rather than walk you through building a fancy frontend, we're just going to give you one and show you how it interacts with your service:
+
+1. Clone our tutorials repo to the destination of your choice
+    ```
+    git clone https://github.com/oasislabs/tutorials.git <destination>
+    ```
+2. Get rid of the existing starter code application, and replace it with the one from our tutorial:
+    ```
+    rm -rf app && cp -r <destination>/tutorials/ballot/app app
+    ```
+
+Nice! This pre-baked application is written in [Vue.js](https://vuejs.org/), but the concepts we're about to discuss should largely be generalizable to your web framework of choice as well.
+Let's inspect the contents of the application source code:
+
+```
+cd app && ls src
+```
+which should reveal the following file structure:
+```
+App.vue
+main.js
+router.js
+store.js
+views/
+```
+
+`App.vue` and `main.js` are used for defining application structure and initialization, `views/` stores the different pages within your applications, and `router.js` stores routing information for navigating between those views.
+We won't focus on any of these for the most part, and restrict our attention to `store.js`.
+
+### Local State Management
+
+When you open `store.js`, you'll notice the initial configuration:
+
+```javascript
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+import oasis from '@oasislabs/client';
+
+Vue.use(Vuex);
+```
+
+[Vuex](https://vuex.vuejs.org/) is the state management library for Vue, which makes it simple to store and predictably mutate your global application state.
+This is the bottleneck location where all logic for connecting to and making RPCs to your ballot service will be implemented.
+
+As best practice, even with other frameworks we recommend you create a single instance of every Oasis service your application interacts with, and isolate all service interaction within whatever your web framework uses as a global state container (i.e. `vuex` for Vue.js and `redux` for React).
+
+Cool. Next let's turn our attention to the store initialization; you'll notice we `export default new Vuex.Store(<store>);`, where `<store>` is a Javascript object containing `state`, `mutations`, and `actions` as attributes.
+
+In summary, `state` stores global application state and `actions` are methods which asynchronously modify that state by commiting synchronous `mutations`. If you're curious to learn more, check out [these awesome Vue docs](https://vuex.vuejs.org/guide/state.html)!
+
+#### State
+
+For state, we'll keep track of the constructor `args` to our secret ballot, filepath to the generated service `bytecode`, a pointer to a locally-running `gateway` for submitting RPCs (which you'll set up shortly), and a `mnemonic` which is used by the gateway to sign RPCs and validate them as having been initiated by you.
+All of these will be used to create the `ballot` object in your state, which is a nice abstraction that represents your ballot service and will let you make RPCs painlessly.
+
+```javascript
+state: {
+    args: [
+        'Which starter Pokemon is the best?',
+        [
+        'Bulbasaur',
+        'Charmander',
+        'Squirtle',
+        ],
+    ],
+    ballot: null,
+    bytecode: '/assets/ballot.wasm',
+    gateway: 'ws://localhost:8546',
+    mnemonic: 'range drive remove bleak mule satisfy mandate east lion minimum unfold ready',
+}
+```
+
+#### Mutations
+
+We only need a single mutation, used for committing the (initially null) `ballot` in your state to the actual service reference once it's initialized.
+
+```javascript
+mutations: {
+    setBallot(state, ballot) {
+        state.ballot = ballot;
+    },
+}
+```
+
+#### Actions
+
+These first few actions are where all the heavy lifting happens. `connectToOasis()` configures your gateway so it's ready to sign off on RPCs you initiate.
+`deployService()` and `loadService()` can then be used to either create a new service instance (by reading in bytecode from `ballot.wasm` and deploying it via the `gateway`) or connecting to an existing one, respectively.
+
+```javascript
+// Ballot Instantiation
+async connectToOasis() {
+    const wallet = oasis.Wallet.fromMnemonic(this.state.mnemonic);
+    const gateway = new oasis.gateways.Web3Gateway(
+    this.state.gateway,
+    wallet,
+    );
+
+    oasis.setGateway(gateway);
+},
+async deployService({ commit }) {
+    await this.dispatch('connectToOasis');
+
+    const bytecode = await fetch(this.state.bytecode)
+    .then(response => response.body)
+    .then(stream => new Response(stream))
+    .then(async (response) => {
+        const serviceBinary = await response.arrayBuffer();
+        return new Uint8Array(serviceBinary);
+    });
+
+    const ballot = await oasis.deploy({
+    bytecode,
+    arguments: this.state.args,
+    options: { gasLimit: '0xf42400' },
+    });
+
+    commit('setBallot', ballot);
+},
+async loadService({ commit }, address) {
+    await this.dispatch('connectToOasis');
+
+    const ballot = await oasis.Service.at(address);
+
+    commit('setBallot', ballot);
+}
+```
+
+Finally, we have a number of actions specifically for executing RPCs.
+As you'll notice, once your ballot instance is initialized this is as simple as calling the RPC name from your service instance.
+
+*Note: You may also notice the `{ gasLimit: '0xf42400' }` addendum to each RPC.*
+*`gasLimit` is an option used to indicate the maximum operational cost of executing your RPC and must be done explicitly for confidential Oasis services.*
+*`0xf42400` is the maximum possible value we currently support for `gasLimit`.*
+
+```javascript
+// Ballot API
+async castVote({_}, candidateNum) {
+    return this.state.ballot.vote(candidateNum, { gasLimit: '0xf42400' });
+},
+async closeBallot() {
+    return this.state.ballot.close({ gasLimit: '0xf42400' });
+},
+async getBallotID() {
+    return this.state.ballot._inner.address;
+},
+async getCandidates() {
+    return this.state.ballot.candidates({ gasLimit: '0xf42400' });
+},
+async getDescription() {
+    return this.state.ballot.description({ gasLimit: '0xf42400' });
+},
+async getOpen() {
+    return this.state.ballot.voting_open({ gasLimit: '0xf42400' });
+},
+async getResults() {
+    return this.state.ballot.results({ gasLimit: '0xf42400' });
+},
+async getWinner() {
+    return this.state.ballot.winner({ gasLimit: '0xf42400' });
+},
+```
+
+### Running the application
+
+Perfect! Now that you know how to interact with your service via your application, let's try it out.
+Simply run `oasis chain` to spin up your local blockchain server, then in another terminal window, run
+
+```
+npm run serve
+```
+
+and the voting application should spin itself up, yielding output that looks like the following:
+
+```
+App running at:
+  - Local:   http://localhost:8080/ 
+  - Network: http://192.168.222.173:8080/
+```
+
+Voila! A working voting application, accessible at `http://localhost:8080`.
+ You'll see it load for a couple of seconds as your service is deployed using the `deployService()` action, then a `Participate in Vote` button should appear and your service ID will be displayed as a query parameter in the address bar.
+ At long last, you can rest easy, appreciating the deep euphoria of having built a fully-functional decentralized cloud service and application.
+
+After interacting with the app and voting, checking your `oasis chain` terminal window should be populated with logs, including those for all service RPCs you made during your interactions.
 
 ## Onward to (messages of) victory!
 
