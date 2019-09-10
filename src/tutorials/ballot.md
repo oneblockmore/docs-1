@@ -503,8 +503,8 @@ These first few actions are where all the heavy lifting happens. `connectToOasis
 async connectToOasis() {
     const wallet = oasis.Wallet.fromMnemonic(this.state.mnemonic);
     const gateway = new oasis.gateways.Web3Gateway(
-    this.state.gateway,
-    wallet,
+        this.state.gateway,
+        wallet,
     );
 
     oasis.setGateway(gateway);
@@ -512,6 +512,7 @@ async connectToOasis() {
 async deployService({ commit }) {
     await this.dispatch('connectToOasis');
 
+    // Read the bytecode stored in ballot.wasm
     const bytecode = await fetch(this.state.bytecode)
     .then(response => response.body)
     .then(stream => new Response(stream))
@@ -520,10 +521,11 @@ async deployService({ commit }) {
         return new Uint8Array(serviceBinary);
     });
 
+    // Deploy your service with the Oasis client
     const ballot = await oasis.deploy({
-    bytecode,
-    arguments: this.state.args,
-    options: { gasLimit: '0xf42400' },
+        bytecode,
+        arguments: this.state.args,
+        options: { gasLimit: '0xf42400' },
     });
 
     commit('setBallot', ballot);

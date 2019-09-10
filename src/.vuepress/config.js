@@ -33,7 +33,7 @@ module.exports = {
       '/quickstart',
       {
         title: 'Tutorials',
-        collapsable: false,
+        collapsable: true,
         children: [
           ['/tutorials/ballot', 'Beginner: Secret Ballot'],
           ['/tutorials/messaging', 'Intermediate: Private Chat'],
