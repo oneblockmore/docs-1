@@ -461,7 +461,7 @@ In summary, `state` stores global application state and `actions` are methods wh
 
 #### State
 
-For state, we'll keep track of the constructor `args` to our secret ballot, filepath to the generated service `bytecode`, a pointer to a locally-running `gateway` for submitting RPCs (which you'll set up shortly), and a `mnemonic` which is used by the gateway to sign RPCs and validate them as having been initiated by you.
+For state, we'll keep track of the constructor `args` to our secret ballot, a filepath to the generated service `bytecode`, a pointer to a locally-running `gateway` for submitting RPCs (which we'll set up shortly), and a `mnemonic` which is used by the gateway to sign RPCs and validate them as having been initiated by you.
 All of these will be used to create the `ballot` object in your state, which is a nice abstraction that represents your ballot service and will let you make RPCs painlessly.
 
 ```javascript
@@ -469,9 +469,9 @@ state: {
     args: [
         'Which starter Pokemon is the best?',
         [
-        'Bulbasaur',
-        'Charmander',
-        'Squirtle',
+            'Bulbasaur',
+            'Charmander',
+            'Squirtle',
         ],
     ],
     ballot: null,
@@ -580,6 +580,7 @@ Perfect! Now that you know how to interact with your service via your applicatio
 Simply run `oasis chain` to spin up your local blockchain server, then in another terminal window, run
 
 ```
+npm install
 npm run serve
 ```
 
