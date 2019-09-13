@@ -1,6 +1,6 @@
 # Quickstart
 
-In this guide we will take you through setting up your Oasis dev environment, testing a simple Rust service using cargo, testing the same service using a locally running blockchain, and finally testing it using Devnet 2.0, our decentralized server.
+In this guide we will take you through setting up your Oasis dev environment, testing a simple Rust service using cargo, testing the same service using a locally running blockchain, and finally testing it using our Devnet 2.0.
 
 ## Set Up the Oasis SDK
 
@@ -76,7 +76,7 @@ Tests:       3 passed, 3 total
 2. Make sure you are in a secure location, and then *Click to reveal*.  
    This will reveal your API token, which is used to control your wallet.
    You must never lose your API token nor share it with anyone—unless, of course, you want to lose control of your wallet!
-3. Give your local toolchain access to your wallet by first running
+3. Give your local toolchain access to your wallet by running
    ```
    oasis config profile.default.credential -
    ```
