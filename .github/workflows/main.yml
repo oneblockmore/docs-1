@@ -17,9 +17,7 @@ jobs:
       run: cd src && npx vuepress build
     - name: Fix edit links
       run: |
-        sed -i -e 's?/docs/edit/master/?/docs/edit/master/src/?g' src/.vuepress/dist/*/*.html
-        ls -R src/.vuepress/dist
-        find src/.vuepress/dist -type f -exec fgrep "docs/edit/master" -C 0 {} \;
+        find src/.vuepress/dist -name "*.html" | xargs sed -i -e 's?/docs/edit/master/?/docs/edit/master/src/?g'
     - name: Update docs
       run: |
         git config --global user.name "nhynes"
