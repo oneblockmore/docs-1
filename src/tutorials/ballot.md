@@ -476,8 +476,8 @@ state: {
     ],
     ballot: null,
     bytecode: '/assets/ballot.wasm',
-    gateway: 'ws://localhost:8546',
-    mnemonic: 'range drive remove bleak mule satisfy mandate east lion minimum unfold ready',
+    gateway: 'https://gateway.devnet.oasiscloud.io',
+    token: 'AAAAAhq2tOs8hDVZLUob7LDnb1SsBS2ZGV3zIguKznK5jv/J',
 }
 ```
 
@@ -501,12 +501,11 @@ These first few actions are where all the heavy lifting happens. `connectToOasis
 ```javascript
 // Ballot Instantiation
 async connectToOasis() {
-    const wallet = oasis.Wallet.fromMnemonic(this.state.mnemonic);
-    const gateway = new oasis.gateways.Web3Gateway(
-        this.state.gateway,
-        wallet,
-    );
+    const headers = new Map();
+    headers.set('X-OASIS-LOGIN-TOKEN', this.state.token);
+    headers.set('X-OASIS-SESSION-KEY', 'ballot-session');
 
+    const gateway = new oasis.gateways.Gateway(this.state.gateway, null, { headers });
     oasis.setGateway(gateway);
 },
 async deployService({ commit }) {
@@ -522,9 +521,8 @@ async deployService({ commit }) {
     });
 
     // Deploy your service with the Oasis client
-    const ballot = await oasis.deploy({
+    const ballot = await oasis.deploy(...this.state.args, {
         bytecode,
-        arguments: this.state.args,
         options: { gasLimit: '0xf42400' },
     });
 
@@ -542,35 +540,31 @@ async loadService({ commit }, address) {
 Finally, we have a number of actions specifically for executing RPCs.
 As you'll notice, once your ballot instance is initialized this is as simple as calling the RPC name from your service instance.
 
-*Note: You may also notice the `{ gasLimit: '0xf42400' }` addendum to each RPC.*
-*`gasLimit` is an option used to indicate the maximum operational cost of executing your RPC and must be done explicitly for confidential Oasis services.*
-*`0xf42400` is the maximum possible value we currently support for `gasLimit`.*
-
 ```javascript
 // Ballot API
 async castVote({_}, candidateNum) {
-    return this.state.ballot.vote(candidateNum, { gasLimit: '0xf42400' });
+    return this.state.ballot.vote(candidateNum);
 },
 async closeBallot() {
-    return this.state.ballot.close({ gasLimit: '0xf42400' });
+    return this.state.ballot.close();
 },
 async getBallotID() {
     return this.state.ballot._inner.address;
 },
 async getCandidates() {
-    return this.state.ballot.candidates({ gasLimit: '0xf42400' });
+    return this.state.ballot.candidates();
 },
 async getDescription() {
-    return this.state.ballot.description({ gasLimit: '0xf42400' });
+    return this.state.ballot.description();
 },
 async getOpen() {
-    return this.state.ballot.voting_open({ gasLimit: '0xf42400' });
+    return this.state.ballot.voting_open();
 },
 async getResults() {
-    return this.state.ballot.results({ gasLimit: '0xf42400' });
+    return this.state.ballot.results();
 },
 async getWinner() {
-    return this.state.ballot.winner({ gasLimit: '0xf42400' });
+    return this.state.ballot.winner();
 },
 ```
 
