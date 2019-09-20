@@ -431,10 +431,11 @@ App.vue
 main.js
 router.js
 store.js
+plugins/
 views/
 ```
 
-`App.vue` and `main.js` are used for defining application structure and initialization, `views/` stores the different pages within your applications, and `router.js` stores routing information for navigating between those views.
+`App.vue`, `main.js`, and `plugins/` are used for defining application structure and initialization; `views/` stores the different pages within your applications; and `router.js` stores routing information for navigating between those views.
 We won't focus on any of these for the most part, and restrict our attention to `store.js`.
 
 ### Local State Management
@@ -558,7 +559,7 @@ async getDescription() {
     return this.state.ballot.description();
 },
 async getOpen() {
-    return this.state.ballot.voting_open();
+    return this.state.ballot.votingOpen();
 },
 async getResults() {
     return this.state.ballot.results();
