@@ -21,8 +21,8 @@
        intercom();
       </script>
     
-    <link rel="preload" href="/assets/css/0.styles.8cd1649a.css" as="style"><link rel="preload" href="/assets/js/app.26fb9f50.js" as="script"><link rel="preload" href="/assets/js/2.cb3a827c.js" as="script"><link rel="preload" href="/assets/js/11.fd6aebb8.js" as="script"><link rel="prefetch" href="/assets/js/10.784ef151.js"><link rel="prefetch" href="/assets/js/12.f57c1901.js"><link rel="prefetch" href="/assets/js/13.f0f98087.js"><link rel="prefetch" href="/assets/js/3.2c5ce7d7.js"><link rel="prefetch" href="/assets/js/4.a0bfb4ed.js"><link rel="prefetch" href="/assets/js/5.69cdcd03.js"><link rel="prefetch" href="/assets/js/6.bf1f8edb.js"><link rel="prefetch" href="/assets/js/7.1388af76.js"><link rel="prefetch" href="/assets/js/8.df6cdac9.js"><link rel="prefetch" href="/assets/js/9.f4b7895e.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.8cd1649a.css">
+    <link rel="preload" href="/assets/css/0.styles.b3cc4644.css" as="style"><link rel="preload" href="/assets/js/app.1ac50fa1.js" as="script"><link rel="preload" href="/assets/js/2.634bc837.js" as="script"><link rel="preload" href="/assets/js/11.7bf3f214.js" as="script"><link rel="prefetch" href="/assets/js/10.0a1a71d3.js"><link rel="prefetch" href="/assets/js/12.077612e3.js"><link rel="prefetch" href="/assets/js/13.f0f98087.js"><link rel="prefetch" href="/assets/js/3.4f3addaf.js"><link rel="prefetch" href="/assets/js/4.9b58adbd.js"><link rel="prefetch" href="/assets/js/5.01d3f079.js"><link rel="prefetch" href="/assets/js/6.5bd07de6.js"><link rel="prefetch" href="/assets/js/7.e3511614.js"><link rel="prefetch" href="/assets/js/8.e3692e6c.js"><link rel="prefetch" href="/assets/js/9.bc5d842b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b3cc4644.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.svg" alt="Oasis Dev Docs" class="logo"> <span class="site-name can-hide">Oasis Dev Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://oasislabs.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
@@ -285,8 +285,9 @@ Let's inspect the contents of the application source code:</p> <div class="langu
 main.js
 router.js
 store.js
+plugins/
 views/
-</code></pre></div><p><code>App.vue</code> and <code>main.js</code> are used for defining application structure and initialization, <code>views/</code> stores the different pages within your applications, and <code>router.js</code> stores routing information for navigating between those views.
+</code></pre></div><p><code>App.vue</code>, <code>main.js</code>, and <code>plugins/</code> are used for defining application structure and initialization; <code>views/</code> stores the different pages within your applications; and <code>router.js</code> stores routing information for navigating between those views.
 We won't focus on any of these for the most part, and restrict our attention to <code>store.js</code>.</p> <h3 id="local-state-management"><a href="#local-state-management" aria-hidden="true" class="header-anchor">#</a> Local State Management</h3> <p>When you open <code>store.js</code>, you'll notice the initial configuration:</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> Vuex <span class="token keyword">from</span> <span class="token string">'vuex'</span><span class="token punctuation">;</span>
 
@@ -369,7 +370,7 @@ As you'll notice, once your ballot instance is initialized this is as simple as 
     <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>ballot<span class="token punctuation">.</span><span class="token function">description</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token keyword">async</span> <span class="token function">getOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>ballot<span class="token punctuation">.</span><span class="token function">voting_open</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>ballot<span class="token punctuation">.</span><span class="token function">votingOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token keyword">async</span> <span class="token function">getResults</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>ballot<span class="token punctuation">.</span><span class="token function">results</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -390,6 +391,6 @@ You can now imagine that you could hold elections on dinner, your fantasy sports
       ←
       <a href="/quickstart.html" class="prev">Quickstart</a></span> <span class="next"><a href="/tutorials/messaging.html">Intermediate: Private Chat</a>→
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.26fb9f50.js" defer></script><script src="/assets/js/2.cb3a827c.js" defer></script><script src="/assets/js/11.fd6aebb8.js" defer></script>
+    <script src="/assets/js/app.1ac50fa1.js" defer></script><script src="/assets/js/2.634bc837.js" defer></script><script src="/assets/js/11.7bf3f214.js" defer></script>
   </body>
 </html>
