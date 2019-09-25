@@ -54,6 +54,13 @@ module.exports = {
         ],
       },
       {
+        title: 'Rust Docs',
+        collapsable: true,
+        children: [
+          ['https://docs.rs/oasis-std', 'oasis_std'],
+        ],
+      },
+      {
         title: 'Operator Docs',
         collapsable: true,
         children: [
