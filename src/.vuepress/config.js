@@ -69,6 +69,10 @@ module.exports = {
           ['/operators/hardware-requirements', 'Hardware Requirements'],
         ],
       },
+      {
+        title: 'Client Side SDK',
+        link: 'https://oasis-labs-oasis-client.readthedocs-hosted.com/en/latest/',
+      },
     ],
     displayAllHeaders: true,
     repo: 'oasislabs',
