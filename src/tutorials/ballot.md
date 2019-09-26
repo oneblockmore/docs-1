@@ -218,6 +218,8 @@ pub fn voting_open(&self, _ctx: &Context) -> bool {
 
 These are similar to the constructor but a bit different. In non-constructor RPC methods, we have access to the state of the service, as provided by a reference to `self`. We can pick the items out of `self` that we want and return them to the user. Note that _all_ RPC methods -- even those that do not use `self` and `Context` -- receive these two arguments, but you are free to ignore them.
 
+_Note_: The first parameter of every RPC must be a `Context`, and by convention the underscore prefix is used to indicate that it is unused.
+
 ### Mutating state
 
 Now to implement the core of the ballot service. We'll want to support functionality for 1) general participants to vote and 2) the ballot owner to close voting.
