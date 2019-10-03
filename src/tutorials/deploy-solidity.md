@@ -2,6 +2,8 @@
 
 [Compound Money Market](https://github.com/compound-finance/compound-money-market) is a lending market built on Ethereum. Here, it is configured for deployment on Oasis. This tutorial's methods for deploying Solidity contracts using Truffle and Web3.js are applicable to any Ethereum contract written in Solidity. For contracts written in Vyper, see the [Uniswap tutorial](https://docs.oasis.dev/tutorials/deploy-vyper.html).
 
+If you want to deploy the contracts for yourself, a copy of the Compound Money Market contracts along with a `truffle.js` file and sample deployment through `Web3` can be found [here](https://github.com/oasislabs/compound).
+
 ## Prerequisites
 
 This tutorial assumes that you have [already installed the Oasis toolchain](https://docs.oasis.dev/quickstart.html#install-the-oasis-toolchain). Your installation was successful if the following command works without error:
