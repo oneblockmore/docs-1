@@ -39,7 +39,8 @@ Then, run `make` in your `vyper` directory. You may need to use `sudo` if on mac
 ```bash
 sudo make
 ```
-Vyper should be installed now and you should be able to compile contracts. The [Vyper Documentation](https://vyper.readthedocs.io/en/latest/installing-vyper.html) has more installation information.
+Vyper should be installed now and you should be able to compile contracts.
+The [Vyper Documentation](https://vyper.readthedocs.io/en/latest/installing-vyper.html) has more installation information.
 
 Uniswap Vyper contracts can be found [here](https://github.com/Uniswap/contracts-vyper).
 You can compile using the `vyper` command or using Truffle.
@@ -88,7 +89,8 @@ const provider = new HDWalletProvider(MNEMONIC, URL);
 const web3 = new Web3(provider);
 ```
 
-Using the contract ABI and bytecode from the compilation of your vyper contracts, instantiate new contract objects. Uniswap requires a **factory** contract to create new exchanges, and an **exchange** contract that serves as a template for each exchange.
+Using the contract ABI and bytecode from the compilation of your vyper contracts, instantiate new contract objects.
+Uniswap requires a **factory** contract to create new exchanges, and an **exchange** contract that serves as a template for each exchange.
 
 ```js
 const factory_json = fs.readFileSync('./path/to/file.json', 'utf8');
@@ -139,7 +141,9 @@ provider.engine.stop();
 
 ## Testing the Deployment
 
-Once you've deployed your contracts, you can interact with them! Try initializing the factory by giving it a template (the exchange contract address). Make sure to do all of this before you call the stop function.
+Once you've deployed your contracts, you can interact with them!
+Try initializing the factory by giving it a template (the exchange contract address).
+Make sure to do all of this before you call the stop function.
 
 Assuming you have your factory and exchange contracts already deployed, fill these in with their corresponding addresses:
 
