@@ -67,13 +67,13 @@ const my_address = '0xb8b3666d8fea887d97ab54f571b8e5020c5c8b58';
 
 The Oasis Network supports the deployment of Solidity contracts using Truffle, a common tool used by Ethereum developers to compile, test, and deploy smart contracts. Truffle is the easiest way to deploy a smart contract; all you really need to do is make sure you have Migrations and edit the Truffle configuration file.
 
-### Truffle Configuration File 
+### Truffle Configuration File
 
 The configuration file is typically called `truffle.js` or `truffle-config.js`. You will add the Truffle HDWallet Provider, a Hierarchical Deterministic (HD) Wallet that uses a mnemonic to extract your keys. Take the mnemonic you saved earlier from running `oasis chain` and input it here.
 
 ```js
-const HDWalletProvider = require("truffle-hdwallet-provider");
-const MNEMONIC = "range drive remove bleak mule satisfy mandate east lion minimum unfold ready";
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const MNEMONIC = 'range drive remove bleak mule satisfy mandate east lion minimum unfold ready';
 ```
 Make sure you install the HDWallet Provider:
 
@@ -87,8 +87,8 @@ Add the Oasis Network as one of the networks (listed under `module.exports`) in 
 module.exports = {
   networks: {
     development: {
-      provider: () => new HDWalletProvider(MNEMONIC, "https://localhost:8545"),
-      network_id: "*",
+      provider: () => new HDWalletProvider(MNEMONIC, 'https://localhost:8545'),
+      network_id: '*',
     },
 }
 ```
@@ -96,7 +96,7 @@ module.exports = {
 If you want to use the Oasis Devnet, you will need to use the following URL:
 
 ```js
-provider: () => new HDWalletProvider(MNEMONIC, "https://web3.devnet.oasiscloud.io")
+provider: () => new HDWalletProvider(MNEMONIC, 'https://web3.devnet.oasiscloud.io')
 ```
 
 If it doesn't exist already, you need to include the version of the Solidity compiler, `solc`, you need for the Compound contracts, which is likely not your installed Truffle's configured default. You'll need the highest version used by the contracts, which is stated at the top (e.g.` pragma solidity ^0.4.24`). Add to `module.exports`:
@@ -104,7 +104,7 @@ If it doesn't exist already, you need to include the version of the Solidity com
 ```js
 compilers: {
   solc: {
-    version: "0.4.24"
+    version: '0.4.24'
   }
 },
 ```
@@ -135,7 +135,7 @@ First, you'll want to initialize `web3` with a URL and `truffle-hdwallet-provide
 
 ```js
 const Web3 = require('web3');
-const HDWalletProvider = require("truffle-hdwallet-provider");
+const HDWalletProvider = require('truffle-hdwallet-provider');
 const MNEMONIC = 'range drive remove bleak mule satisfy mandate east lion minimum unfold ready';
 const URL = 'http://localhost:8545';
 const fs = require('fs'); // for reading files
@@ -147,8 +147,8 @@ When you compile your contract, there should be a JSON representation of the con
 
 ```js
 const json = fs.readFileSync('./path/to/file.json', 'utf8');
-const abi = JSON.parse(json)["abi"];
-const bytecode = JSON.parse(json)["bytecode"];
+const abi = JSON.parse(json)['abi'];
+const bytecode = JSON.parse(json)['bytecode'];
 ```
 
 Initialize the new contract object. Deploy the contract and save its address.
