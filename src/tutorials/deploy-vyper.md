@@ -164,10 +164,6 @@ factory_contract.methods.initializeFactory(exchange_address).send({
         console.log(`\n\nSuccessfully initialized Uniswap factory with template: ${result}`);
     });
 }).catch(console.log);
-    factory_contract.methods.exchangeTemplate().call((err, result) => {
-      console.log('\n\nSuccessfully initialized Uniswap factory with template: ' + result)
-    });
-  }).catch(console.log);
 ```
 
 You can also create a new exchange for the ERC20 token of your choice. All you need is the address to the token contract.
