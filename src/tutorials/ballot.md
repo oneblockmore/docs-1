@@ -574,7 +574,7 @@ async getWinner() {
 ### Running the application
 
 Perfect! Now that you know how to interact with your service via your application, let's try it out.
-Simply run `oasis chain` to spin up your local blockchain server, then in another terminal window, run
+Simply run
 
 ```
 npm install
@@ -592,8 +592,6 @@ App running at:
 Voila! A working voting application, accessible at `http://localhost:8080`.
  You'll see it load for a couple of seconds as your service is deployed using the `deployService()` action, then a `Participate in Vote` button should appear and your service ID will be displayed as a query parameter in the address bar.
  At long last, you can rest easy, appreciating the deep euphoria of having built a fully-functional decentralized cloud service and application.
-
-After interacting with the app and voting, checking your `oasis chain` terminal window should be populated with logs, including those for all service RPCs you made during your interactions.
 
 ## Onward to (messages of) victory!
 
