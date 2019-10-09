@@ -107,7 +107,7 @@ If you want to use the Oasis Devnet, you will need to use the following URL:
 provider: () => new HDWalletProvider(MNEMONIC, 'https://web3.devnet.oasiscloud.io')
 ```
 
-If it doesn't exist already, you need to include the version of the Solidity compiler, `solc`, you need for the Compound contracts, which is likely not your installed Truffle's configured default.
+If it doesn't exist already, you need to include the version of the Solidity compiler, `solc`, needed for your particular contracts, which is likely not your installed Truffle's configured default.
 You'll need the highest version used by the contracts, which is stated at the top (e.g.` pragma solidity ^0.4.24`). Add to `module.exports`:
 
 ```js
