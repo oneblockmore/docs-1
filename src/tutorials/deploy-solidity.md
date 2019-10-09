@@ -1,10 +1,7 @@
-# Deploying Solidity Contracts on Oasis (Compound)
+# Deploying Solidity Contracts on Oasis 
 
-[Compound Money Market](https://github.com/compound-finance/compound-money-market) is a lending market built on Ethereum. Here, it is configured for deployment on Oasis.
-This tutorial's methods for deploying Solidity contracts using Truffle and Web3.js are applicable to any Ethereum contract written in Solidity.
+This tutorial will demonstrate how to deploy Solidity contracts to the Oasis platform using Truffle and Web3.js. It should work for _any_ Solidity contract.
 For contracts written in Vyper, see the [Uniswap tutorial](./deploy-vyper.md).
-
-If you want to deploy the contracts for yourself, a copy of the Compound Money Market contracts along with a `truffle.js` file and sample deployment through `Web3` can be found [here](https://github.com/oasislabs/compound).
 
 ## Prerequisites
 
