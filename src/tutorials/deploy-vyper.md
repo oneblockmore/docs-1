@@ -1,8 +1,10 @@
 # Deploying Vyper Contracts on Oasis (Uniswap)
 
-[Uniswap](https://uniswap.io/) is a decentralized exchange (DEX) for ERC20 tokens built on Ethereum. Here, it is configured for deployment on Oasis.
+This tutorial demonstrates how to deploy Vyper contracts onto the Oasis platform using Truffle and Web3.js. 
+These techniques should work with _any_ Vyper contract, but we've chosen to use [Uniswap](https://uniswap.io/) as an illustrative example.
+Uniswap is an open-source decentralized exchange (DEX) for ERC20 tokens built on Ethereum. 
 This tutorial's methods for deploying Vyper contracts using Truffle and Web3.js are applicable to any Ethereum contract written in Vyper.
-For contracts written in Solidity, see the [Compound tutorial](./deploy-solidity.md).
+For contracts written in Solidity, see the [Solidity tutorial](./deploy-solidity.md).
 
 If you want to deploy the contracts for yourself, a copy of the Uniswap contracts along with a `truffle.js` file and sample deployment through `Web3` can be found [here](https://github.com/oasislabs/uniswap).
 
