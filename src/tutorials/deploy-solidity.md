@@ -1,11 +1,13 @@
 # Deploying Solidity Contracts on Oasis 
 
-This tutorial will demonstrate how to deploy Solidity contracts to the Oasis platform using Truffle and Web3.js. It should work for _any_ Solidity contract.
+This tutorial will demonstrate how to deploy Solidity contracts to the Oasis platform using Truffle and Web3.js. 
+It should work for _any_ Solidity contract.
 For contracts written in Vyper, see the [Uniswap tutorial](./deploy-vyper.md).
 
 ## Prerequisites
 
-This tutorial assumes that you have [already installed the Oasis toolchain](https://docs.oasis.dev/quickstart.html#install-the-oasis-toolchain). Your installation was successful if the following command works without error:
+This tutorial assumes that you have [already installed the Oasis toolchain](https://docs.oasis.dev/quickstart.html#install-the-oasis-toolchain). 
+Your installation was successful if the following command works without error:
 
 ```bash
 oasis --version
@@ -17,7 +19,8 @@ Using the Oasis toolchain, you can run a local blockchain server, just like you 
 oasis chain
 ```
 
-This command will spawn a local network with 10 accounts (private keys and public addresses) each funded with 100 DEV (Oasis' equivalent of ether). The output will look something like this:
+This command will spawn a local network with 10 accounts (private keys and public addresses) each funded with 100 DEV (Oasis' equivalent of ether). 
+The output will look something like this:
 
 ```bash
 2019-09-27 10:54:21,448 INFO  [oasis_chain] Starting Oasis local chain
@@ -56,7 +59,8 @@ Base HD Path:  m/44'/60'/0'/0/{account_index}
 Save the Mnemonic; you will need it later. 
 
 _Note_: The port :8546 corresponds to ws. You will need to use the port :8545 for http connections. 
-You might also want to save one of the public addresses to serve as your account to deploy contracts with. For example you can copy-paste an account like so:
+You might also want to save one of the public addresses to serve as your account to deploy contracts with. 
+For example you can copy-paste an account like so:
 
 ```js
 const my_address = '0xb8b3666d8fea887d97ab54f571b8e5020c5c8b58';
@@ -69,7 +73,8 @@ Truffle is the easiest way to deploy a smart contract; all you really need to do
 
 ### Truffle Configuration File
 
-The configuration file is typically called `truffle.js` or `truffle-config.js`. You will add the Truffle HDWallet Provider, a Hierarchical Deterministic (HD) Wallet that uses a mnemonic to extract your keys.
+The configuration file is typically called `truffle.js` or `truffle-config.js`. 
+You need to add the Truffle HDWallet Provider, a Hierarchical Deterministic (HD) Wallet that uses a mnemonic to extract your keys.
 Take the mnemonic you saved earlier from running `oasis chain` and input it here.
 
 ```js
@@ -134,7 +139,8 @@ truffle deploy
 
 ## Deploy Using Web3
 
-The Oasis Network also has support for [Web3.js](https://web3js.readthedocs.io/en/v1.2.0/getting-started.html), a Javascript module to help build frontends for contracts on Ethereum. This method is more involved, but useful in creating your frontend application.
+The Oasis Network also has support for [Web3.js](https://web3js.readthedocs.io/en/v1.2.0/getting-started.html), a Javascript module to help build frontends for contracts on Ethereum. 
+This method is more involved, but useful in creating your frontend application.
 
 First, you'll want to initialize `web3` with a URL and `truffle-hdwallet-provider` as the provider - the same one used to deploy on Truffle earlier.
 If you are using a local Oasis chain, your URL will be `'http://localhost:8545'`.
