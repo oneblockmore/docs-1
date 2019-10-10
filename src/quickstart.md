@@ -2,6 +2,8 @@
 
 In this guide we will take you through setting up your Oasis dev environment, testing a simple Rust service using cargo, testing the same service using a locally running blockchain, and finally testing it using our Devnet 2.0.
 
+If you run into any issues or have a question, you can chat with us in our public [Slack channel](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg).
+
 ## Set Up the Oasis SDK
 
 ### Install the Oasis Toolchain
