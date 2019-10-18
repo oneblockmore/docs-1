@@ -1,12 +1,13 @@
 # Quickstart
 
 In this guide we will take you through setting up your Oasis dev environment, testing a simple Rust service using cargo, testing the same service using a locally running blockchain, and finally testing it using our Devnet 2.0.
+You can choose to install the Oasis toolchain [locally](#install-the-oasis-toolchain-locally) or [with Docker](#install-with-docker).
 
 If you run into any issues or have a question, you can chat with us in our public [Slack channel](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg).
 
 ## Set Up the Oasis SDK
 
-### Install the Oasis Toolchain
+### Install the Oasis Toolchain Locally
 
 ```
 curl --proto '=https' --tlsv1.2 -sSL https://get.oasis.dev | python
@@ -14,11 +15,38 @@ curl --proto '=https' --tlsv1.2 -sSL https://get.oasis.dev | python
 
 Alternatively, pipe into `python - --help` to see installation options.
 
+### Install with Docker
+
+```
+docker pull oasislabs/tutorials
+```
+
 ## Unit Test the "Hello World" Service Using Cargo
 
-1. `git clone https://github.com/oasislabs/tutorials`
-2. `cd tutorials/hello-world/service`
-3. `oasis test -- --nocapture`
+First, clone our tutorials repository from GitHub:
+
+```
+git clone https://github.com/oasislabs/tutorials
+```
+
+If you installed the Oasis toolchain locally, simply
+
+```
+cd tutorials/hello-world/service
+```
+
+or if you installed with Docker:
+
+```
+docker run -v /path/to/tutorials/repo:/tutorials -it oasislabs/tutorials /bin/bash
+cd /tutorials/hello-world/service
+```
+
+Now you can test the `hello-world` service!
+
+```
+oasis test -- --nocapture
+```
 
 The test will do the following:
 
