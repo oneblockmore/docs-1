@@ -49,14 +49,18 @@ Name: "Buffycoin"
 Symbol: "BUF"
 Total supply: 200000000000
 Common pool: 0
-ts=2019-10-25T10:55:16.808009722Z level=warn module=cmd/stake caller=stake.go:68 msg="failed to query staking threshold(s)" err="rpc error: code = Unknown desc = staking: invalid threshold" attempt=1
+Staking threshold (entity): 0
+Staking threshold (validator): 0
+Staking threshold (compute): 0
+Staking threshold (storage): 0
 ```
 
-TODO: Error above should not be there!
+There is a native token named `Buffycoin` with symbol `BUF` in our test environment
+with total supply of 200 billion. All tokens are allocated in their respective
+accounts and no tokens are in the *common pool*. Finally we see no staking
+thresholds for any node kind (entity, validator, compute, storage).
 
-TODO: Describe the fields above. Should they be JSON encoded?
-
-To list accounts with positive balance, try:
+Let's list all accounts with positive balance:
 
 ```bash
 $ ./go/oasis-node/oasis-node stake list \
@@ -78,9 +82,9 @@ $ ./go/oasis-node/oasis-node stake account info \
 number of tokens which can be spent by a transfer transaction signed by the
 account's private key. Each account can also serve as an escrow. `escrow_balance`
 is the number of tokens this account contains as an escrow and which can be
-reclaimed by the depositor. In our environment, both balances have 10^11 tokens.
-Any outgoing transaction of the account must have an incremental `nonce`. In our
-case, the next outgoing transaction of the account will have `nonce: 0`.
+reclaimed by the depositor. In our environment, both balances have 100 billion
+tokens. Any outgoing transaction of the account must have an incremental `nonce`.
+In our case, the next outgoing transaction of the account will have `nonce: 0`.
 
 ## Example: Burning tokens
 
@@ -120,11 +124,8 @@ transaction however, we need to connect to our local Oasis node as follows:
 The submit operation above requires two parameters:
 * `--stake.transaction.file` is the input filename of the transaction,
 * `--stake.account.id` is the staking account which pays the transaction fee and
-serves as an escrow and gets slashed, if malicious transaction is to be
+serves as an escrow. This accounts gets slashed, if invalid transaction is
 submitted.
-
-TODO: Have I described `stake.account.id` correctly? It has nothing to do witch
-actual transaction content, right (burning tokens etc.)?  
 
 Finally, let's check the new balance of the account:
 
