@@ -43,7 +43,7 @@ different classes Nodes and potentially to different hardware.
 
 ### Committee Responsibilities
 
-![Transaction Processing](./operator_images/web3_diagram_v2.png)
+![Transaction Processing](/operator_images/web3_diagram_v2.png)
 
 In the figure above, we see the flow of transactions in each committee. The
 details of each committee is best described in our [research
