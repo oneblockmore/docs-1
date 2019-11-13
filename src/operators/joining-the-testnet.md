@@ -492,7 +492,7 @@ To complete the staking process we need to submit your escrow transaction:
   $ docker exec -it oasis_node /bin/bash
   $ oasis-node stake account submit \
     --stake.transaction.file /serverdir/signed-escrow.tx \
-    -a /serverdir/node/internal.sock
+    -a unix:/serverdir/node/internal.sock
   ```
 
   Without docker:
@@ -500,7 +500,7 @@ To complete the staking process we need to submit your escrow transaction:
   ```
   $ oasis-node stake account submit \
     --stake.transaction.file /serverdir/signed-escrow.tx \
-    -a /serverdir/node/internal.sock
+    -a unix:/serverdir/node/internal.sock
   ```
 
 ### Registering Your Entity
@@ -564,7 +564,7 @@ to be in a docker container if you are using that):
 
 ```
 $ export NODE_PUB_KEY="s+vZ71qeZnlq0HmQSDBiWn2OKcy3fXOuPMu76/5GkUI="
-$ oasis-node registry node list -v -a /serverdir/node/internal.sock | grep $NODE_PUB_KEY
+$ oasis-node registry node list -v -a unix:/serverdir/node/internal.sock | grep $NODE_PUB_KEY
 ```
 
 If `grep` found the key, then you're properly connected!
