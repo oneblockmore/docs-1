@@ -10,6 +10,8 @@ In the coming months, the code and tooling will become available for the general
 public to join the Oasis Network. The Node Operator docs available here will be
 continuously updated as more information becomes available.
 
+If you run into any issues or have a question, you can chat with us in our public [Slack channel](https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg).
+
 ## Oasis Network Roadmap
 
 ![Oasis Network Roadmap](/operator_images/roadmap.png)
