@@ -1,10 +1,13 @@
-# Deploying Solidity Contracts on Oasis (Compound)
+# Deploying Solidity Contracts on Oasis 
 
-[Compound Money Market](https://github.com/compound-finance/compound-money-market) is a lending market built on Ethereum. Here, it is configured for deployment on Oasis. This tutorial's methods for deploying Solidity contracts using Truffle and Web3.js are applicable to any Ethereum contract written in Solidity. For contracts written in Vyper, see the [Uniswap tutorial](https://docs.oasis.dev/tutorials/deploy-vyper.html).
+This tutorial will demonstrate how to deploy Solidity contracts to the Oasis platform using Truffle and Web3.js. 
+It should work for _any_ Solidity contract.
+For contracts written in Vyper, see the [Uniswap tutorial](./deploy-vyper.md).
 
 ## Prerequisites
 
-This tutorial assumes that you have [already installed the Oasis toolchain](https://docs.oasis.dev/quickstart.html#install-the-oasis-toolchain). Your installation was successful if the following command works without error:
+This tutorial assumes that you have [already installed the Oasis toolchain](./quickstart.html#install-the-oasis-toolchain). 
+Your installation was successful if the following command works without error:
 
 ```bash
 oasis --version
@@ -16,7 +19,8 @@ Using the Oasis toolchain, you can run a local blockchain server, just like you 
 oasis chain
 ```
 
-This command will spawn a local network with 10 accounts (private keys and public addresses) each funded with 100 DEV (Oasis' equivalent of ether). The output will look something like this:
+This command will spawn a local network with 10 accounts (private keys and public addresses) each funded with 100 DEV (Oasis' equivalent of ether). 
+The output will look something like this:
 
 ```bash
 2019-09-27 10:54:21,448 INFO  [oasis_chain] Starting Oasis local chain
@@ -55,7 +59,8 @@ Base HD Path:  m/44'/60'/0'/0/{account_index}
 Save the Mnemonic; you will need it later. 
 
 _Note_: The port :8546 corresponds to ws. You will need to use the port :8545 for http connections. 
-You might also want to save one of the public addresses to serve as your account to deploy contracts with. For example you can copy-paste an account like so:
+You might also want to save one of the public addresses to serve as your account to deploy contracts with. 
+For example you can copy-paste an account like so:
 
 ```js
 const my_address = '0xb8b3666d8fea887d97ab54f571b8e5020c5c8b58';
@@ -63,15 +68,18 @@ const my_address = '0xb8b3666d8fea887d97ab54f571b8e5020c5c8b58';
 
 ## Deploy Using Truffle
 
-The Oasis Network supports the deployment of Solidity contracts using Truffle, a common tool used by Ethereum developers to compile, test, and deploy smart contracts. Truffle is the easiest way to deploy a smart contract; all you really need to do is make sure you have Migrations and edit the Truffle configuration file.
+The Oasis Network supports the deployment of Solidity contracts using Truffle, a common tool used by Ethereum developers to compile, test, and deploy smart contracts.
+Truffle is the easiest way to deploy a smart contract; all you really need to do is make sure you have Migrations and edit the Truffle configuration file.
 
-### Truffle Configuration File 
+### Truffle Configuration File
 
-The configuration file is typically called `truffle.js` or `truffle-config.js`. You will add the Truffle HDWallet Provider, a Hierarchical Deterministic (HD) Wallet that uses a mnemonic to extract your keys. Take the mnemonic you saved earlier from running `oasis chain` and input it here.
+The configuration file is typically called `truffle.js` or `truffle-config.js`. 
+You need to add the Truffle HDWallet Provider, a Hierarchical Deterministic (HD) Wallet that uses a mnemonic to extract your keys.
+Take the mnemonic you saved earlier from running `oasis chain` and input it here.
 
 ```js
-const HDWalletProvider = require("truffle-hdwallet-provider");
-const MNEMONIC = "range drive remove bleak mule satisfy mandate east lion minimum unfold ready";
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const MNEMONIC = 'range drive remove bleak mule satisfy mandate east lion minimum unfold ready';
 ```
 Make sure you install the HDWallet Provider:
 
@@ -79,14 +87,16 @@ Make sure you install the HDWallet Provider:
 npm install truffle-hdwallet-provider
 ```
 
-Add the Oasis Network as one of the networks (listed under `module.exports`) in your configuration file. If you want the default network to be the Oasis Network, call it the development network. Otherwise, you will need to specify it with a flag later on.
+Add the Oasis Network as one of the networks (listed under `module.exports`) in your configuration file.
+If you want the default network to be the Oasis Network, call it the development network.
+Otherwise, you will need to specify it with a flag later on.
 
 ```js
 module.exports = {
   networks: {
     development: {
-      provider: () => new HDWalletProvider(MNEMONIC, "https://localhost:8545"),
-      network_id: "*",
+      provider: () => new HDWalletProvider(MNEMONIC, 'https://localhost:8545'),
+      network_id: '*',
     },
 }
 ```
@@ -94,22 +104,24 @@ module.exports = {
 If you want to use the Oasis Devnet, you will need to use the following URL:
 
 ```js
-provider: () => new HDWalletProvider(MNEMONIC, "https://web3.devnet.oasiscloud.io")
+provider: () => new HDWalletProvider(MNEMONIC, 'https://web3.devnet.oasiscloud.io')
 ```
 
-If it doesn't exist already, you need to include the version of the Solidity compiler, `solc`, you need for the Compound contracts, which is likely not your installed Truffle's configured default. You'll need the highest version used by the contracts, which is stated at the top (e.g.` pragma solidity ^0.4.24`). Add to `module.exports`:
+If it doesn't exist already, you need to include the version of the Solidity compiler, `solc`, needed for your particular contracts, which is likely not your installed Truffle's configured default.
+You'll need the highest version used by the contracts, which is stated at the top (e.g.` pragma solidity ^0.4.24`). Add to `module.exports`:
 
 ```js
 compilers: {
   solc: {
-    version: "0.4.24"
+    version: '0.4.24'
   }
 },
 ```
 
 ### Migrations
 
-Migrations are files that help Truffle deploy your contracts. If your repository is lacking Migrations files, you will need to write some - these docs detail how to do so.
+Migrations are files that help Truffle deploy your contracts.
+If your repository is lacking Migrations files, you will need to write some - [these docs](https://www.trufflesuite.com/docs/truffle/getting-started/running-migrations) detail how to do so.
 
 ### Deploy
 
@@ -127,13 +139,17 @@ truffle deploy
 
 ## Deploy Using Web3
 
-The Oasis Network also has support for [Web3.js](https://web3js.readthedocs.io/en/v1.2.0/getting-started.html), a Javascript module to help build frontends for contracts on Ethereum. This method is more involved, but useful in creating your frontend application.
+The Oasis Network also has support for [Web3.js](https://web3js.readthedocs.io/en/v1.2.0/getting-started.html), a Javascript module to help build frontends for contracts on Ethereum. 
+This method is more involved, but useful in creating your frontend application.
+Oasis also supports [`ethers.js`](https://docs.ethers.io/ethers.js/html/), which is very similar.
 
-First, you'll want to initialize `web3` with a URL and `truffle-hdwallet-provider` as the provider - the same one used to deploy on Truffle earlier. If you are using a local Oasis chain, your URL will be `'http://localhost:8545'`. If you want to use the devnet, the URL will be `'https://web3.devnet.oasiscloud.io'`.
+First, you'll want to initialize `web3` with a URL and `truffle-hdwallet-provider` as the provider - the same one used to deploy on Truffle earlier.
+If you are using a local Oasis chain, your URL will be `'http://localhost:8545'`.
+If you want to use the devnet, the URL will be `'https://web3.devnet.oasiscloud.io'`.
 
 ```js
 const Web3 = require('web3');
-const HDWalletProvider = require("truffle-hdwallet-provider");
+const HDWalletProvider = require('truffle-hdwallet-provider');
 const MNEMONIC = 'range drive remove bleak mule satisfy mandate east lion minimum unfold ready';
 const URL = 'http://localhost:8545';
 const fs = require('fs'); // for reading files
@@ -141,12 +157,13 @@ const provider = new HDWalletProvider(MNEMONIC, URL);
 const web3 = new Web3(provider);
 ```
 
-When you compile your contract, there should be a JSON representation of the contract in your project's `./build/contracts` folder. You need the ABI and bytecode of your contract to deploy it; retrieve it like so:
+When you compile your contract, there should be a JSON representation of the contract in your project's `./build/contracts` folder.
+You need the ABI and bytecode of your contract to deploy it; retrieve it like so:
 
 ```js
 const json = fs.readFileSync('./path/to/file.json', 'utf8');
-const abi = JSON.parse(json)["abi"];
-const bytecode = JSON.parse(json)["bytecode"];
+const abi = JSON.parse(json)['abi'];
+const bytecode = JSON.parse(json)['bytecode'];
 ```
 
 Initialize the new contract object. Deploy the contract and save its address.
