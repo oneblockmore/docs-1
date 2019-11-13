@@ -190,6 +190,11 @@ following files from `/localhostdir/node1` to `/serverdir/node` over a secure ch
 * `tls_identity.pem`
 * `tls_identity_cert.pem`
 
+After copying, make sure that all of these files have `0600` permissions:
+```
+chmod -R 600 /serverdir/node/*.pem
+```
+
 _You may notice that some of these files were listed as **DO NOT SHARE**. In the
 future these keys should be generated and referenced from HSM. Before we have
 HSM support, these keys should be kept as secure as possible on the `server`.
@@ -340,7 +345,7 @@ $ docker run --entrypoint /oasis/bin/oasis-node \
     -p 26656:26656 \
     -p 42261:42261 \
     oasislabs/oasis-node:$OASIS_NODE_TAG \
-    --config /servernode/etc/config.yml
+    --config /serverdir/etc/config.yml
 ```
 
 _Note: the `-p 42261:42261` port binding is temporary. We will notify all of you
@@ -373,8 +378,9 @@ As part of the starting the server process, the `oasis-node` binary will, by
 default, setup an internal unix socket in the `datadir` of the Node. This socket
 can be used to communicate to the node and query details about the network.
 
+The following should be run from inside the docker container or the server, depending on how you chose to start the node.
 ```bash
-$ oasis-node registry entity list -a /serverdir/node/internal.sock
+$ oasis-node registry entity list -a unix:/serverdir/node/internal.sock
 ```
 
 If this command fails, you'll receive a non-zero exit code and there's a high
@@ -418,6 +424,8 @@ In the following example `entity.json`, the Entity Public Key is
   "allow_entity_signed_nodes": false
 }
 ```
+
+After filling out this form, wait for an email notifying you that you've been funded before moving forward. The following sections assume that you have already been funded. 
 
 ## Staking and Registering
 
