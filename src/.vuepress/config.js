@@ -67,9 +67,15 @@ module.exports = {
           ['/operators/overview', 'Node Operator Overview'],
           ['/operators/prerequisites', 'Prerequisites Guide'],
           ['/operators/joining-the-testnet', 'Joining the Testnet'],
-          ['/operators/current-testnet-parameters', 'Current Testnet Parameters'],
+          [
+            '/operators/current-testnet-parameters',
+            'Current Testnet Parameters',
+          ],
           ['/operators/architectural-overview', 'Architectural Overview'],
-          ['/operators/hardware-recommendations', 'Node Hardware Recommendations'],
+          [
+            '/operators/hardware-recommendations',
+            'Node Hardware Recommendations',
+          ],
         ],
       },
       {
