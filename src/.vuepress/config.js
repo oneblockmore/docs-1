@@ -65,8 +65,11 @@ module.exports = {
         collapsable: true,
         children: [
           ['/operators/overview', 'Node Operator Overview'],
+          ['/operators/prerequisites', 'Prerequisites Guide'],
+          ['/operators/joining-the-testnet', 'Joining the Testnet'],
+          ['/operators/current-testnet-parameters', 'Current Testnet Parameters'],
           ['/operators/architectural-overview', 'Architectural Overview'],
-          ['/operators/hardware-requirements', 'Hardware Requirements'],
+          ['/operators/hardware-recommendations', 'Node Hardware Recommendations'],
         ],
       },
       {
