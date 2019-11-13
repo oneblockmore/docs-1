@@ -14,6 +14,9 @@ continuously updated as more information becomes available.
 
 ![Oasis Network Roadmap](/operator_images/roadmap.png)
 
-## Next Steps
+## Quick Navigation
 
-* [Architectural Overview](./architectural-overview)
+* [Architectural Overview](./architectural-overview.md)
+* [Hardware Recommendations](./hardware-recommendations.md)
+* [Joining The Testnet](./joining-the-testnet.md)
+* [Current Testnet Parameters](./current-testnet-parameters.md)
