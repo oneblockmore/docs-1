@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Joining the Testnet | Oasis Dev Docs</title>
+    <meta name="description" content="Oasis Developer Documentation">
+    <link rel="icon" href="/favicon.ico">
+  <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-116576458-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+       gtag('config', 'UA-116576458-1');</script>
+  <script>var APP_ID = "scny7003";
+
+       window.intercomSettings = {
+         app_id: APP_ID
+       };
+
+       function intercom(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + APP_ID;var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}};
+       intercom();
+      </script>
+    
+    <link rel="preload" href="/assets/css/0.styles.96dbb0d1.css" as="style"><link rel="preload" href="/assets/js/app.9ac13d38.js" as="script"><link rel="preload" href="/assets/js/2.9fdb909d.js" as="script"><link rel="preload" href="/assets/js/21.f02bf788.js" as="script"><link rel="prefetch" href="/assets/js/10.a1dc075e.js"><link rel="prefetch" href="/assets/js/11.e132bcbf.js"><link rel="prefetch" href="/assets/js/12.c9e24846.js"><link rel="prefetch" href="/assets/js/13.0c8e183b.js"><link rel="prefetch" href="/assets/js/14.4c78b426.js"><link rel="prefetch" href="/assets/js/15.0615c7b0.js"><link rel="prefetch" href="/assets/js/16.85e5d4a8.js"><link rel="prefetch" href="/assets/js/17.775ed1df.js"><link rel="prefetch" href="/assets/js/18.dace329d.js"><link rel="prefetch" href="/assets/js/19.90cfaef9.js"><link rel="prefetch" href="/assets/js/20.4bbce07b.js"><link rel="prefetch" href="/assets/js/22.ccf88215.js"><link rel="prefetch" href="/assets/js/23.8a53bea4.js"><link rel="prefetch" href="/assets/js/24.479ba448.js"><link rel="prefetch" href="/assets/js/25.877d53e3.js"><link rel="prefetch" href="/assets/js/26.b9bc8c32.js"><link rel="prefetch" href="/assets/js/27.fe0e1dd8.js"><link rel="prefetch" href="/assets/js/28.a514cd09.js"><link rel="prefetch" href="/assets/js/29.52c961e1.js"><link rel="prefetch" href="/assets/js/3.5ad34091.js"><link rel="prefetch" href="/assets/js/30.05eff899.js"><link rel="prefetch" href="/assets/js/31.6f538f87.js"><link rel="prefetch" href="/assets/js/32.77fe67cf.js"><link rel="prefetch" href="/assets/js/4.4f3dd76a.js"><link rel="prefetch" href="/assets/js/5.42e9b3dc.js"><link rel="prefetch" href="/assets/js/6.b3e1f977.js"><link rel="prefetch" href="/assets/js/7.b9c6371b.js"><link rel="prefetch" href="/assets/js/8.eda5a0e0.js"><link rel="prefetch" href="/assets/js/9.9036786a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.96dbb0d1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.svg" alt="Oasis Dev Docs" class="logo"> <span class="site-name can-hide">Oasis Dev Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://oasislabs.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://dashboard.oasiscloud.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Dashboard
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Support
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/oasislabs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://oasislabs.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Home
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://dashboard.oasiscloud.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Dashboard
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://join.slack.com/t/oasiscommunity/shared_invite/enQtNjQ5MTA3NTgyOTkzLWIxNTg1ZWZmOTIwNmQ2MTg1YmU0MzgyMzk3OWM2ZWQ4NTQ0ZDJkNTBmMTdlM2JhODllYjg5YmJkODc2NzgwNTg" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Support
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/oasislabs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/overview.html" class="sidebar-link">Overview</a></li><li><a href="/quickstart.html" class="sidebar-link">Quickstart</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Tutorials</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Operator Docs</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/operators/overview.html" class="sidebar-link">Node Operator Overview</a></li><li><a href="/operators/prerequisites.html" class="sidebar-link">Prerequisites Guide</a></li><li><a href="/operators/joining-the-testnet.html" class="active sidebar-link">Joining the Testnet</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/operators/joining-the-testnet.html#prerequisites" class="sidebar-link">Prerequisites</a></li><li class="sidebar-sub-header"><a href="/operators/joining-the-testnet.html#creating-your-entity" class="sidebar-link">Creating Your Entity</a></li><li class="sidebar-sub-header"><a href="/operators/joining-the-testnet.html#running-an-oasis-node-on-the-server" class="sidebar-link">Running an Oasis Node on the server</a></li><li class="sidebar-sub-header"><a href="/operators/joining-the-testnet.html#signing-up-for-testnet-tokens" class="sidebar-link">Signing up for Testnet Tokens</a></li><li class="sidebar-sub-header"><a href="/operators/joining-the-testnet.html#staking-and-registering" class="sidebar-link">Staking and Registering</a></li><li class="sidebar-sub-header"><a href="/operators/joining-the-testnet.html#you-re-a-validator" class="sidebar-link">You're a Validator!</a></li></ul></li><li><a href="/operators/current-testnet-parameters.html" class="sidebar-link">Current Testnet Parameters</a></li><li><a href="/operators/architectural-overview.html" class="sidebar-link">Architectural Overview</a></li><li><a href="/operators/hardware-recommendations.html" class="sidebar-link">Node Hardware Recommendations</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>API Reference</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="joining-the-testnet"><a href="#joining-the-testnet" class="header-anchor">#</a> Joining the Testnet</h1> <p>This guide will cover setting up your nodes on the Public Testnet. There is some
+assumption of knowledge on the use of basic command line tools and docker.</p> <h2 id="prerequisites"><a href="#prerequisites" class="header-anchor">#</a> Prerequisites</h2> <p>Before following this guide, make sure you've followed the <a href="/operators/prerequisites.html">Prerequisites
+Guide</a> and understand how to use the <code>oasis-node</code> binary.</p> <h3 id="systems"><a href="#systems" class="header-anchor">#</a> Systems</h3> <p>This guide assumes that you have two different physical machines that you will
+use for deployment. These machines are the following:</p> <ul><li>Your local system, henceforth called the <code>localhost</code>.</li> <li>A remote system to run as an Oasis node, henceforth called the <code>server</code>.</li></ul> <p>The reason for this is to ensure protection of the keys used to
+setup your node. This guide does not include the use of HSMs, but
+should be used in the future.</p> <h2 id="creating-your-entity"><a href="#creating-your-entity" class="header-anchor">#</a> Creating Your Entity</h2> <p>Everything in this section should be done on the <code>localhost</code> as there are
+sensitive items that will be created.</p> <h3 id="creating-a-working-directory"><a href="#creating-a-working-directory" class="header-anchor">#</a> Creating a Working Directory</h3> <p>During this entity initialization process, we will create keys and other
+important artifacts that are necessary for the deployment of nodes on the
+network. It is important that you save and protect the generated artifacts in
+this directory if you intend to use them to register your entity and nodes. We
+will reference the working directory on <code>localhost</code> as <code>/localhostdir</code>
+throughout the documentation. Inside <code>/localhostdir</code> you should create the
+following directories:</p> <ul><li><code>entity</code> - This will store your entity. The private contents in this directory
+are safest if used on a machine kept disconnected from the internet. The
+directory permissions should be <code>rwx------</code></li> <li><code>node1</code> - This will store a node we are calling &quot;node1&quot;. The name is not
+important. It simply represents one of your nodes. You can rename it to whatever you
+wish. The private contents of this directory will be used on the node itself.
+You should initialize this information on a system with access to the entity's
+private key. The directory permissions should be <code>rwx------</code></li></ul> <p>To create the directory structure, use the following command:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">mkdir</span> -m700 -p <span class="token punctuation">{</span>entity,node<span class="token punctuation">}</span>
+</code></pre></div><h3 id="copying-the-genesis-file"><a href="#copying-the-genesis-file" class="header-anchor">#</a> Copying the Genesis File</h3> <p>The latest genesis file can be found <a href="/operators/current-testnet-parameters.html">here</a>.
+You should download the latest <code>genesis.json</code> file, copy it to the working
+directory and save its path into an environment variable:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">GENESIS_FILE_PATH</span><span class="token operator">=</span>/localhostdir/genesis.json
+</code></pre></div><p>This will be needed later when generating transactions.</p> <h3 id="initializing-an-entity"><a href="#initializing-an-entity" class="header-anchor">#</a> Initializing an Entity</h3> <p>The entity, as <a href="/architectural-overview.html#entities-and-key-management">described
+here</a> is critical to
+operating nodes on the network as it controls the stake attached to a given
+individual or organization on the network. In the future we will support using
+entity keys through HSMs to ensure that entity keys cannot be easily
+compromised. We strongly suggest that you do not use any entity that is generated
+with the current process on the Mainnet. During the Public Testnet and staking
+competition we would also suggest that you generate the entity on a system that has
+no network connection to provide rudimentary protection for the entity key.
+However, it is up to you to determine your own security practices.</p> <p>To initialize an entity simply run the following from <code>/localhostdir/entity</code>:</p> <div class="language- extra-class"><pre class="language-text"><code>$ oasis-node registry entity init
+</code></pre></div><p>This will generate 3 files in <code>/localhostdir/entity</code></p> <ul><li><code>entity.pem</code> - The private key of the entity. <strong>NEVER SHARE THIS AS IT CAN BE
+USED TO TRANSFER STAKE</strong></li> <li><code>entity.json</code> - The entity descriptor. This is the JSON of the unsigned
+information to be sent to the registry application on the network.</li> <li><code>entity_genesis.json</code>- This JSON object contains the entity descriptor that
+has been signed with the the <code>entity.pem</code>. This is meant to be shared for
+inclusion on the genesis block.</li></ul> <h3 id="initializing-a-node"><a href="#initializing-a-node" class="header-anchor">#</a> Initializing a Node</h3> <p>A node registers itself to the network when the node starts up. However, in
+order to validate itself, the entity signs a public key associated to the
+node. This allows the node registration to happen without the uploading entity key
+to the internet. To initialize a validator node, run the following from
+the <code>/localhostdir/node1</code> directory.</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">STATIC_IP</span><span class="token operator">=</span><span class="token operator">&lt;</span>YOUR_STATIC_IP<span class="token operator">&gt;</span>
+$ oasis-node registry node init <span class="token punctuation">\</span>
+  --entity /localhostdir/entity <span class="token punctuation">\</span>
+  --node.consensus_address <span class="token variable">$STATIC_IP</span>:26656 <span class="token punctuation">\</span>
+  --node.is_self_signed <span class="token punctuation">\</span>
+  --node.role validator
+</code></pre></div><p>This command will create a validator node's identity so that it can be a
+self-signed node (this is what allows self registration). There are more options
+for this that you can explore by running <code>oasis-node registry node init --help</code>.
+The options shown above are the minimum.</p> <p>The command will generate the following files:</p> <ul><li><code>consensus.pem</code> - The node's private key used for consensus. <strong>DO NOT SHARE</strong></li> <li><code>consensus_pub.pem</code> - The node's public key for consensus</li> <li><code>identity.pem</code> - The node's identity private key. <strong>DO NOT SHARE</strong></li> <li><code>identity_pub.pem</code> - The node's identity public key.</li> <li><code>node_genesis.json</code> - The node's details if you wish to include this node on
+the genesis file of the network.</li> <li><code>p2p.pem</code> - The node's private key for libp2p. <strong>DO NOT SHARE</strong></li> <li><code>p2p_pub.pem</code> - The node's public key for libp2p.</li> <li><code>tls_identity.pem</code> - The node's TLS key for grpc's TLS . <strong>DO NOT SHARE</strong></li> <li><code>tls_identity_cert.pem</code> - The node's TLS cert for grpc's TLS.</li></ul> <h4 id="adding-the-node-to-the-entity-descriptor"><a href="#adding-the-node-to-the-entity-descriptor" class="header-anchor">#</a> Adding the Node to the Entity Descriptor</h4> <p>Once the node has been initialized, we need to add it to the entity descriptor
+so that it can properly register itself when the node starts up.</p> <p>Execute the following command in the <code>/localhostdir/node1</code> directory:</p> <div class="language- extra-class"><pre class="language-text"><code>$ oasis-node registry entity update \
+  --datadir /localhostdir/entity \
+  --entity.node.descriptor node_genesis.json
+</code></pre></div><p>This will update the entity descriptor <code>entity.json</code> and subsequently the
+<code>entity_genesis.json</code> file that contains the signed entity descriptor payload.</p> <h4 id="initializing-additional-nodes"><a href="#initializing-additional-nodes" class="header-anchor">#</a> Initializing Additional Nodes</h4> <p>At the time of Public Testnet, the network will only have validators and no
+other committees (no compute, no key management, no storage, etc.). At this time
+this documentation does not include instructions in configuring anything beyond
+a single validator. If you'd like to create more validator nodes you can simply
+repeat the process above to initialize the artifacts for an additional node (and
+renaming the proper things). Each node will require at least the network's
+defined minimum staking amount (at this time this is 100 tokens).</p> <h2 id="running-an-oasis-node-on-the-server"><a href="#running-an-oasis-node-on-the-server" class="header-anchor">#</a> Running an Oasis Node on the <code>server</code></h2> <h3 id="setting-up-the-oasis-node-s-working-directory"><a href="#setting-up-the-oasis-node-s-working-directory" class="header-anchor">#</a> Setting up the Oasis Node's Working Directory</h3> <p>Before we run the node on the <code>server</code> we need to ensure that we have a place to
+store necessary files for the node. For this guide, we will call this working
+directory <code>/serverdir</code> directory.</p> <h4 id="setting-up-the-the-serverdir-directory"><a href="#setting-up-the-the-serverdir-directory" class="header-anchor">#</a> Setting up the the <code>/serverdir</code> Directory</h4> <p>In the <code>/serverdir</code> directory we will create the following subdirectories:</p> <ul><li><code>etc/</code> - this is to store the configuration</li> <li><code>node/</code> - this is to store the node's data</li> <li><code>node/entity/</code> - this is to store the public components of the node's entity</li></ul> <p>You can make this directory structure by calling the following command:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">mkdir</span> -p /serverdir/<span class="token punctuation">{</span>etc,node/entity<span class="token punctuation">}</span>
+</code></pre></div><h4 id="copying-the-node-artifacts-from-localhostdir"><a href="#copying-the-node-artifacts-from-localhostdir" class="header-anchor">#</a> Copying the Node Artifacts from <code>/localhostdir</code></h4> <p>In order for the node registration to work properly, as defined in
+<code>/localhostdir/entity.json</code>, you must copy the node's artifacts you generated in
+the <a href="#initializing-a-node">Initializing a Node</a> section. To do so upload the
+following files from <code>/localhostdir/node1</code> to <code>/serverdir/node</code> over a secure channel:</p> <ul><li><code>consensus.pem</code></li> <li><code>consensus_pub.pem</code></li> <li><code>identity.pem</code></li> <li><code>identity_pub.pem</code></li> <li><code>node_genesis.json</code></li> <li><code>p2p.pem</code></li> <li><code>p2p_pub.pem</code></li> <li><code>tls_identity.pem</code></li> <li><code>tls_identity_cert.pem</code></li></ul> <p>_You may notice that some of these files were listed as <strong>DO NOT SHARE</strong>. In the
+future these keys should be generated and referenced from HSM. Before we have
+HSM support, these keys should be kept as secure as possible on the <code>server</code>.</p> <h4 id="copying-the-public-entity-artifacts-from-localhostdir"><a href="#copying-the-public-entity-artifacts-from-localhostdir" class="header-anchor">#</a> Copying the Public Entity Artifacts from <code>/localhostdir</code></h4> <p>We will also need to have public entity artifacts from the <code>/localhostdir</code>. Copy
+the file from <code>/localhostdir/entity/entity.json</code> to
+<code>/serverdir/node/entity/entity.json</code>.</p> <h4 id="copying-the-genesis-files"><a href="#copying-the-genesis-files" class="header-anchor">#</a> Copying the Genesis Files</h4> <p>The latest genesis files can be found <a href="/operators/current-testnet-parameters.html">here</a>.
+You should download the latest <code>genesis.json</code> file and copy it to
+<code>/serverdir/etc/genesis.json</code>.</p> <h4 id="configuring-the-oasis-node"><a href="#configuring-the-oasis-node" class="header-anchor">#</a> Configuring the Oasis Node</h4> <p>There are a variety of options available when running an Oasis node. The
+following YAML file is a basic configuration for a validator node on the
+network.</p> <p>Before using this configuration you should collect the following information to
+replace the</p> <div><p><code>{{ var }}</code></p></div><p>variables present in the configuration file:</p> <div><p><code>{{ external_address }}</code></p></div><p>This is the external IP you wish to use when
+registering this node. If you are using a Sentry Node, you should use the
+public IP of that machine.</p> <div><p><code>{{ seed_node_address }}</code></p></div><p>This the seed node address in the form</p> <div><p><code>{{ ID }}@{{ IP }}:{{ PORT }}</code></p></div><p>this is published <a href="/operators/current-testnet-parameters.html">here</a></p> <p>Create a file, <code>/serverdir/etc/config.yml</code>, with the following
+contents:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment">##</span>
+<span class="token comment"># Oasis Node Configuration</span>
+<span class="token comment">#</span>
+<span class="token comment"># This file's configurations are derived from the command line args found in the</span>
+<span class="token comment"># root command of the oasis-node binary. For more information execute:</span>
+<span class="token comment">#</span>
+<span class="token comment">#     oasis-node --help</span>
+<span class="token comment">#</span>
+<span class="token comment"># Settings on the command line that are separated by a dot all belong to the</span>
+<span class="token comment"># same nested object. So &quot;--foo.bar.baz hello&quot; would translate to:</span>
+<span class="token comment">#</span>
+<span class="token comment">#     foo:</span>
+<span class="token comment">#       bar:</span>
+<span class="token comment">#         baz: hello</span>
+<span class="token comment">##</span>
+
+<span class="token comment"># Set this to where you wish to store node data. The node artifacts</span>
+<span class="token comment"># should also be located in this directory (for us this is /serverdir/node)</span>
+<span class="token key atrule">datadir</span><span class="token punctuation">:</span> /serverdir/node
+
+<span class="token comment">## THESE NEXT 3 LINES ARE TEMPORARY YOU SHOULD NOT EXPOSE THIS PORT IN ANY WAY</span>
+<span class="token key atrule">grpc</span><span class="token punctuation">:</span>
+  <span class="token key atrule">debug</span><span class="token punctuation">:</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token string">&quot;42261&quot;</span>
+
+<span class="token comment"># Logging.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Per-module log levels are defined below. If you prefer just one unified log</span>
+<span class="token comment"># level, you can use:</span>
+<span class="token comment">#</span>
+<span class="token comment"># log:</span>
+<span class="token comment">#   level: debug</span>
+<span class="token key atrule">log</span><span class="token punctuation">:</span>
+  <span class="token key atrule">level</span><span class="token punctuation">:</span>
+    <span class="token comment"># Per-module log levels. Longest prefix match will be taken. Fallback to</span>
+    <span class="token comment"># &quot;default&quot;, if no match.</span>
+    <span class="token key atrule">default</span><span class="token punctuation">:</span> debug
+    <span class="token key atrule">tendermint</span><span class="token punctuation">:</span> warn
+    <span class="token key atrule">tendermint/context</span><span class="token punctuation">:</span> error
+  <span class="token key atrule">format</span><span class="token punctuation">:</span> JSON
+  <span class="token comment"># By default logs are output to stdout. If you're running this in docker keep the</span>
+  <span class="token comment"># default</span>
+  <span class="token comment">#file: /var/log/oasis-node.log</span>
+
+<span class="token comment"># Path to the genesis file for the current version of the network.</span>
+<span class="token key atrule">genesis</span><span class="token punctuation">:</span>
+  <span class="token key atrule">file</span><span class="token punctuation">:</span> /serverdir/etc/genesis.json
+
+<span class="token comment"># Worker configuration.</span>
+<span class="token key atrule">worker</span><span class="token punctuation">:</span>
+  <span class="token key atrule">registration</span><span class="token punctuation">:</span>
+    <span class="token comment"># In order for the node to register itself the entity.json of the entity used to</span>
+    <span class="token comment"># provision the node must be available on the node</span>
+    <span class="token key atrule">entity</span><span class="token punctuation">:</span> /serverdir/node/entity/entity.json
+
+<span class="token comment"># Consensus backend.</span>
+<span class="token key atrule">consensus</span><span class="token punctuation">:</span>
+  <span class="token comment"># Setting this to true will mean that the node you're deploying will attempt</span>
+  <span class="token comment"># to register as a validator.</span>
+  <span class="token key atrule">validator</span><span class="token punctuation">:</span> <span class="token boolean important">True</span>
+
+<span class="token comment"># Tendermint backend configuration.</span>
+<span class="token key atrule">tendermint</span><span class="token punctuation">:</span>
+  <span class="token key atrule">abci</span><span class="token punctuation">:</span>
+    <span class="token key atrule">prune</span><span class="token punctuation">:</span>
+      <span class="token key atrule">strategy</span><span class="token punctuation">:</span> keep_n
+      <span class="token key atrule">num_kept</span><span class="token punctuation">:</span> <span class="token number">86400</span>
+  <span class="token key atrule">core</span><span class="token punctuation">:</span>
+    <span class="token key atrule">listen_address</span><span class="token punctuation">:</span> tcp<span class="token punctuation">:</span>//0.0.0.0<span class="token punctuation">:</span><span class="token number">26656</span>
+
+    <span class="token comment"># The external_address option is used when registering this node to the</span>
+    <span class="token comment"># network. If you are using a sentry node then this should be the public</span>
+    <span class="token comment"># ip of the sentry node.</span>
+    <span class="token key atrule">external_address</span><span class="token punctuation">:</span> tcp<span class="token punctuation">:</span>//<span class="token punctuation">{</span><span class="token punctuation">{</span> external_address <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">:</span><span class="token number">26656</span>
+
+  <span class="token key atrule">db</span><span class="token punctuation">:</span>
+    <span class="token key atrule">backend</span><span class="token punctuation">:</span> boltdb
+  <span class="token key atrule">debug</span><span class="token punctuation">:</span>
+    <span class="token key atrule">addr_book_lenient</span><span class="token punctuation">:</span> <span class="token boolean important">False</span>
+  <span class="token key atrule">seeds</span><span class="token punctuation">:</span> <span class="token string">&quot;{{ seed_node_address }}&quot;</span>
+</code></pre></div><h3 id="starting-the-oasis-node"><a href="#starting-the-oasis-node" class="header-anchor">#</a> Starting the Oasis Node</h3> <h4 id="starting-with-docker"><a href="#starting-with-docker" class="header-anchor">#</a> Starting with docker</h4> <p>For those of you who are relying on the
+<a href="https://hub.docker.com/r/oasislabs/oasis-node" target="_blank" rel="noopener noreferrer">oasis-node<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> docker container,
+the command to start the oasis-node is:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ docker run --entrypoint /oasis/bin/oasis-node <span class="token punctuation">\</span>
+    --name oasis_node <span class="token punctuation">\</span>
+    --volume /serverdir:/serverdir <span class="token punctuation">\</span>
+    --workdir /serverdir/node <span class="token punctuation">\</span>
+    -p <span class="token number">26656</span>:26656 <span class="token punctuation">\</span>
+    -p <span class="token number">42261</span>:42261 <span class="token punctuation">\</span>
+    oasislabs/oasis-node:<span class="token variable">$OASIS_NODE_TAG</span> <span class="token punctuation">\</span>
+    --config /servernode/etc/config.yml
+</code></pre></div><p><em>Note: the <code>-p 42261:42261</code> port binding is temporary. We will notify all of you
+when this no longer needs to be bound.</em></p> <p>This will create a docker container named <code>oasis_node</code>. This is useful to have a
+named container so it can be referenced later. If you name it something else,
+then be aware that the docs will reference <code>oasis_node</code> for this docker
+container.</p> <p><em>It is up to you to configure these options how you see fit. This invocation of
+the server process will not restart automatically. If you'd like to run this in
+the background add the docker flag <code>--detach</code></em></p> <h4 id="starting-without-docker"><a href="#starting-without-docker" class="header-anchor">#</a> Starting without docker</h4> <p>If you have built the <code>oasis-node</code> binary on your own, you can start the server
+by running the command below. Please note, the node is, by default, configured to run in the
+foreground. You will need to use a process supervisor like
+<a href="http://supervisord.org/" target="_blank" rel="noopener noreferrer">supervisord<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>,
+<a href="https://github.com/systemd/systemd" target="_blank" rel="noopener noreferrer">systemd<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>, etc.</p> <div class="language- extra-class"><pre class="language-text"><code>$ oasis-node --config /serverdir/etc/config.yml
+</code></pre></div><h3 id="verifying-the-connection-to-the-network"><a href="#verifying-the-connection-to-the-network" class="header-anchor">#</a> Verifying the Connection to the Network</h3> <p>As part of the starting the server process, the <code>oasis-node</code> binary will, by
+default, setup an internal unix socket in the <code>datadir</code> of the Node. This socket
+can be used to communicate to the node and query details about the network.</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ oasis-node registry entity list -a /serverdir/node/internal.sock
+</code></pre></div><p>If this command fails, you'll receive a non-zero exit code and there's a high
+likelihood that you are not connected to the network. However, if it does work
+properly it should respond with output like:</p> <div class="language- extra-class"><pre class="language-text"><code>2317a8eef10e470434411aebac8f1a8c0f1c6a0d35ff53921f8bc70588bb66b2
+8e3873f84f7f2250eb456dc598dc56b812f561137fe41c383128e6c14e0e2e74
+cf3b004bd98f3e1eab92e97c5fa6cbe4d42a00133c515a2440fefaca514a48ff
+</code></pre></div><p>Once you get to a node that's connected you can move on to the next section as
+your node is not yet registered as a validator on the Oasis Testnet.</p> <h2 id="signing-up-for-testnet-tokens"><a href="#signing-up-for-testnet-tokens" class="header-anchor">#</a> Signing up for Testnet Tokens</h2> <p><em>This won't be necessary if you are in the genesis file or already have tokens
+through some other means. For most people, this will not be true.</em></p> <p>In order to participate on the Testnet you'll need to have tokens. You'll use
+these tokens to register your entity and stake on the network. To get tokens,
+you'll need to sign up with <a href="https://oasisfoundation.typeform.com/to/dlcekq" target="_blank" rel="noopener noreferrer">this
+form<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>. While filling out the
+form, it will ask for your Entity Public Key. This is the same as your Entity
+Account ID and can be found in the <code>/localhostdir/entity/entity.json</code>. In this
+JSON file, the Entity Public Key is the <code>id</code> field.</p> <h3 id="example"><a href="#example" class="header-anchor">#</a> Example</h3> <p>In the following example <code>entity.json</code>, the Entity Public Key is
+<code>TszGIrC1X08czcik0DgAnmGPzjf8pfQ47bgrjpTmbro=</code>.</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;TszGIrC1X08czcik0DgAnmGPzjf8pfQ47bgrjpTmbro=&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;nodes&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;C93lKVNNkca3Oo9m1exiz22NvMBxxYjkyBrt2+eFAds=&quot;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;registration_time&quot;</span><span class="token operator">:</span> <span class="token number">1573585972</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;allow_entity_signed_nodes&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="staking-and-registering"><a href="#staking-and-registering" class="header-anchor">#</a> Staking and Registering</h2> <p><em>This won't be necessary if your Entity is in the genesis file.</em></p> <p>Once you have been funded, you can now complete the process of connecting your
+node by staking so that you can register your entity and register your node.</p> <h3 id="generating-a-staking-escrow-transaction-on-the-localhost"><a href="#generating-a-staking-escrow-transaction-on-the-localhost" class="header-anchor">#</a> Generating a Staking (Escrow) Transaction on the <code>localhost</code></h3> <p>Your Entity private key should ideally be disconnected from the internet on the
+<code>localhost</code>. You want this because the Entity private key is used to authorize
+transactions on your staking account. To ensure that the Entity private key
+isn't sent to the <code>server</code> we will generate a transaction on the <code>localhost</code>.
+The staking application calls &quot;staking&quot; an escrow. For the testnet, the current
+minimum stake required to register an entity and register a node as a validator
+is 100 tokens. So we will generate an escrow transaction that escrows 100 tokens
+on your own Entity.</p> <div class="language- extra-class"><pre class="language-text"><code>$ oasis-node stake account gen_escrow \
+    --genesis.file $GENESIS_FILE_PATH \
+    --entity $ENTITY_DIR_PATH \
+    --stake.escrow.account $ACCOUNT_ID \
+    --stake.transaction.amount 100000000000000000000 \
+    --stake.transaction.file $OUTPUT_TX_FILE_PATH \
+    --stake.transaction.nonce 0
+</code></pre></div><p>The parameters are as follows:</p> <ul><li><p><code>$ENTITY_DIR_PATH</code> - For this guide this would be <code>/localhostdir/entity/</code></p></li> <li><p><code>$OUTPUT_TX_FILE_PATH</code> - This is where you wish to output the signed
+transaction file. For this guide we will use <code>/localhostdir/signed-escrow.tx</code></p></li> <li><p><code>$ACCOUNT_ID</code> - This is the hex encoding of the Entity Public Key. To derive this you
+can use the following python3 code:</p> <div class="language- extra-class"><pre class="language-text"><code>import binascii, base64
+
+def account_id_from_b64(base64_id):
+    &quot;&quot;&quot;base64_id can be found in entity.json in the `id` field&quot;&quot;&quot;
+    return binascii.hexlify(base64.b64decode(base64_id))
+
+account_id_from_b64(&quot;&lt;YOUR ENTITY PUBLIC KEY&gt;&quot;)
+&gt;&gt;&gt; &quot;deadbeefdeadbeefdeadbeef...&quot;
+</code></pre></div></li></ul> <p>Note that the option <code>--stake.transaction.amount</code> looks like a very large
+number. This is actually equivalent to 100 tokens on the Testnet as each unit
+value used to track the account balance is 1x10^-18 tokens.</p> <h3 id="submitting-your-transaction-on-the-server"><a href="#submitting-your-transaction-on-the-server" class="header-anchor">#</a> Submitting Your Transaction on the <code>server</code></h3> <p>To complete the staking process we need to submit your escrow transaction:</p> <ol><li>Copy the file <code>/localhostdir/signed-escrow.tx</code> on the <code>localhost</code> to
+<code>/serverdir/signed-escrow.tx</code> on the <code>server</code>.</li> <li>Call <code>oasis-node</code> like so:</li></ol> <p>If you're using docker use:</p> <div class="language- extra-class"><pre class="language-text"><code>$ docker exec -it oasis_node /bin/bash
+$ oasis-node stake account submit \
+  --stake.transaction.file /serverdir/signed-escrow.tx \
+  -a /serverdir/node/internal.sock
+</code></pre></div><p>Without docker:</p> <div class="language- extra-class"><pre class="language-text"><code>$ oasis-node stake account submit \
+  --stake.transaction.file /serverdir/signed-escrow.tx \
+  -a /serverdir/node/internal.sock
+</code></pre></div><h3 id="registering-your-entity"><a href="#registering-your-entity" class="header-anchor">#</a> Registering Your Entity</h3> <p>As a final step, you now need to register your entity onto the network.</p> <p><strong>TEMPORARY FIX</strong>: At this time many of these instructions are a temporary fix
+due to missing features on the current <code>oasis-node</code> cli.</p> <h4 id="port-forwarding"><a href="#port-forwarding" class="header-anchor">#</a> Port Forwarding</h4> <p>On one instance of a terminal on the <code>localhost</code> execute the following to handle
+a port forwarding so you can make entity requests. <em>Unfortunately, if you're
+using docker on your <code>localhost</code> you will also have to ssh to your <code>server</code>
+within your the docker container. We apologize for the inconvenience this is a
+temporary measure.</em></p> <div class="language- extra-class"><pre class="language-text"><code>$ ssh $USER@$SERVER_IP -L 42261:127.0.0.1:42261 -N
+</code></pre></div><h4 id="registering-your-node-on-the-network"><a href="#registering-your-node-on-the-network" class="header-anchor">#</a> Registering Your Node on the Network</h4> <p>On a different terminal from your ssh port forward above, execute the following:</p> <div class="language- extra-class"><pre class="language-text"><code>$ oasis-node registry entity register --datadir /localhostdir/entity
+</code></pre></div><p>If everything is successful you will get a zero exit code.</p> <h3 id="checking-that-your-node-is-properly-registered"><a href="#checking-that-your-node-is-properly-registered" class="header-anchor">#</a> Checking that Your Node is Properly Registered</h3> <p><em>We understand these instructions for verification need to improve. Any
+assistance is welcome 😉</em></p> <p>To ensure that your node is properly connected as a Validator on the network, We
+can check to see the node's identity on in the registry's node list.
+Unfortunately, at this time this is a bit of a manual process.</p> <h3 id="getting-the-node-s-consensus-pub-pem-identity"><a href="#getting-the-node-s-consensus-pub-pem-identity" class="header-anchor">#</a> Getting the Node's consensus_pub.pem Identity</h3> <div class="language- extra-class"><pre class="language-text"><code>cat /serverdir/node/consensus_pub.pem
+</code></pre></div><p>This will look like:</p> <div class="language- extra-class"><pre class="language-text"><code>-----BEGIN ED25519 PUBLIC KEY-----
+s+vZ71qeZnlq0HmQSDBiWn2OKcy3fXOuPMu76/5GkUI=
+-----END ED25519 PUBLIC KEY-----
+</code></pre></div><p>We will use <code>s+vZ71qeZnlq0HmQSDBiWn2OKcy3fXOuPMu76/5GkUI=</code>. As the key to search for.</p> <h3 id="grepping-for-the-node-s-identity"><a href="#grepping-for-the-node-s-identity" class="header-anchor">#</a> grepping for the Node's Identity</h3> <p>Finally to see if the node is properly registered, run the command (you may need
+to be in a docker container if you are using that):</p> <div class="language- extra-class"><pre class="language-text"><code>$ export NODE_PUB_KEY=&quot;s+vZ71qeZnlq0HmQSDBiWn2OKcy3fXOuPMu76/5GkUI=&quot;
+$ oasis-node registry node list -v -a /serverdir/node/internal.sock | grep $NODE_PUB_KEY
+</code></pre></div><p>If <code>grep</code> found the key, then you're properly connected!</p> <h2 id="you-re-a-validator"><a href="#you-re-a-validator" class="header-anchor">#</a> You're a Validator!</h2> <p>If you've made it this far you've properly connected your node to the network
+and you're now a Validator on the Public Testnet.</p> <h3 id="maintenance-guides"><a href="#maintenance-guides" class="header-anchor">#</a> Maintenance Guides</h3> <ul><li><a href="/operators/maintenance/wiping-node-state.html">Wiping Node State</a></li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/oasislabs/docs/edit/master/src/operators/joining-the-testnet.md" target="_blank" rel="noopener noreferrer">Help us improve this page!</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/operators/prerequisites.html" class="prev">Prerequisites Guide</a></span> <span class="next"><a href="/operators/current-testnet-parameters.html">Current Testnet Parameters</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.9ac13d38.js" defer></script><script src="/assets/js/2.9fdb909d.js" defer></script><script src="/assets/js/21.f02bf788.js" defer></script>
+  </body>
+</html>
