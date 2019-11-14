@@ -425,7 +425,9 @@ In the following example `entity.json`, the Entity Public Key is
 }
 ```
 
-After filling out this form, wait for an email notifying you that you've been funded before moving forward. The following sections assume that you have already been funded. 
+After filling out this form, wait for an email notifying you that you've been
+funded before moving forward. The following sections assume that you have
+already been funded.
 
 ## Staking and Registering
 
@@ -452,6 +454,8 @@ $ oasis-node stake account gen_escrow \
     --stake.escrow.account $ACCOUNT_ID \
     --stake.transaction.amount 100000000000000000000 \
     --stake.transaction.file $OUTPUT_TX_FILE_PATH \
+    --stake.transaction.fee.gas 1000 \
+    --stake.transaction.fee.amount 1 \
     --stake.transaction.nonce 0
 ```
 
@@ -496,7 +500,7 @@ To complete the staking process we need to submit your escrow transaction:
   ```
 
   Without docker:
-  
+
   ```
   $ oasis-node stake account submit \
     --stake.transaction.file /serverdir/signed-escrow.tx \
