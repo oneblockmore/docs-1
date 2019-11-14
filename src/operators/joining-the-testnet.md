@@ -38,7 +38,7 @@ following directories:
 * `entity` - This will store your entity. The private contents in this directory
   are safest if used on a machine kept disconnected from the internet. The
   directory permissions should be `rwx------`
-* `node1` - This will store a node we are calling "node1". The name is not
+* `node` - This will store a node we are calling "node". The name is not
   important. It simply represents one of your nodes. You can rename it to whatever you
   wish. The private contents of this directory will be used on the node itself.
   You should initialize this information on a system with access to the entity's
@@ -96,7 +96,7 @@ A node registers itself to the network when the node starts up. However, in
 order to validate itself, the entity signs a public key associated to the
 node. This allows the node registration to happen without the uploading entity key
 to the internet. To initialize a validator node, run the following from
-the `/localhostdir/node1` directory.
+the `/localhostdir/node` directory.
 
 ```bash
 $ export STATIC_IP=<YOUR_STATIC_IP>
@@ -130,7 +130,7 @@ The command will generate the following files:
 Once the node has been initialized, we need to add it to the entity descriptor
 so that it can properly register itself when the node starts up.
 
-Execute the following command in the `/localhostdir/node1` directory:
+Execute the following command in the `/localhostdir/node` directory:
 
 ```
 $ oasis-node registry entity update \
@@ -178,7 +178,7 @@ $ mkdir -p /serverdir/{etc,node/entity}
 In order for the node registration to work properly, as defined in
 `/localhostdir/entity.json`, you must copy the node's artifacts you generated in
 the [Initializing a Node](#initializing-a-node) section. To do so upload the
-following files from `/localhostdir/node1` to `/serverdir/node` over a secure channel:
+following files from `/localhostdir/node` to `/serverdir/node` over a secure channel:
 
 * `consensus.pem`
 * `consensus_pub.pem`
