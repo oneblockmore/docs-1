@@ -1,16 +1,18 @@
-# Stake Management using CLI
+# Stake Management in detail using CLI
 
-For node operators Oasis node binary offers CLI tooling for various native token
-stake operations.
+For node operators Oasis node binary offers command line interface tooling for
+various native token stake operations.
 
-The following commands are available when running **online** Oasis node:
+The following commands are available for running **online** Oasis node on server:
 * `oasis-node stake info` shows the native token information,
 * `oasis-node stake list` lists all accounts with positive balance,
 * `oasis-node stake account info` shows detailed account information,
 * `oasis-node stake account submit` submits a pregenerated transaction given the
 filename.
 
-In addition the following transaction generation commands can be run offline:
+In addition the following transaction generation commands are meant to be run
+offline, because signing a transaction requires a private key which **should not
+be accessible** from outside in any way:
 * `oasis-node stake account gen_transfer`
 * `oasis-node stake account gen_burn`
 * `oasis-node stake account gen_escrow`
@@ -18,8 +20,11 @@ In addition the following transaction generation commands can be run offline:
 
 ## Staking basics
 
-We will run the staking operations in a testing environment. To spin the Oasis
-network locally, move to your oasis-core folder and run
+We will run the staking operations in a local testing environment. If you are
+already a validator on a testnet, you can skip this step. All required
+parameters will be passed directly using CLI, so there is no need for a config
+file. To spin up the Oasis network locally, move to your oasis-core folder and
+run
 
 ```bash
 $ ./go/oasis-net-runner/oasis-net-runner \
@@ -37,9 +42,10 @@ level=info module=net-runner caller=root.go:145 ts=2019-10-25T10:54:09.198642162
 ```
 
 In our case `unix:/tmp/oasis-net-runner236357163/net-runner/network/client-0/internal.sock`
-is the path to the local unix socket of the Oasis node. We will use this
-address for performing online stake operations, so let's store it as `ADDR`
-environmental variable:
+is the path to the local unix socket of the Oasis node. If you are running a
+testnet validator node, a similar `internal.sock` unix socket exists in your
+server directory. We will use this address for performing online stake
+operations, so let's store it as `ADDR` environmental variable:
 ```bash
 $ export ADDR=unix:/tmp/oasis-net-runner236357163/net-runner/network/client-0/internal.sock
 ```
@@ -58,7 +64,7 @@ Staking threshold (compute): 0
 Staking threshold (storage): 0
 ```
 
-There is a native token named `Buffycoin` with symbol `BUF` in our test environment
+There is a native token named `Buffycoin` with symbol `BUF` in our environment
 with total supply of 200 billion. All tokens are allocated in their respective
 accounts and no tokens are in the *common pool*. Finally we see no staking
 thresholds for any node kind (entity, validator, compute, storage).
@@ -70,9 +76,9 @@ $ ./go/oasis-node/oasis-node stake list -a $ADDR
 4ea5328f943ef6f66daaed74cb0e99c3b1c45f76307b425003dbc7cb3638ed35
 ```
 
-In our test environment there is one account `4ea5328f943ef6f66daaed74cb0e99c3b1c45f76307b425003dbc7cb3638ed35`
-with positive balance. This is the so called *test entity* account for debugging.
-Let's get more information about the account:
+There exists one account `4ea5328f943ef6f66daaed74cb0e99c3b1c45f76307b425003dbc7cb3638ed35`
+with positive balance. In our case, this is the so called *test entity* account
+for debugging. Let's get more information about the account:
 ```bash
 $ ./go/oasis-node/oasis-node stake account info \
     --stake.account.id 4ea5328f943ef6f66daaed74cb0e99c3b1c45f76307b425003dbc7cb3638ed35 \
@@ -80,24 +86,29 @@ $ ./go/oasis-node/oasis-node stake account info \
 {"id":"TqUyj5Q+9vZtqu10yw6Zw7HEX3Ywe0JQA9vHyzY47TU=","general_balance":"100000000000","escrow_balance":"100000000000","nonce":0}
 ```
 
-`id` stores the Base4 encoded address of the account. `general_balance` is the
-number of tokens which can be spent by a transfer transaction signed by the
-account's private key. Each account can also serve as an escrow. `escrow_balance`
-is the number of tokens this account contains as an escrow and which can be
-reclaimed by the depositor. In our environment, both balances have 100 billion
-tokens. Any outgoing transaction of the account must have an incremental `nonce`.
-In our case, the next outgoing transaction of the account will have `nonce: 0`.
+We notice that:
+* `id` stores the Base4 encoded address of the account.
+* `general_balance` is the number of tokens which can be spent by a transfer
+  transaction signed by the account's private key.
+* Each account can also serve as an escrow. `escrow_balance` is the number of
+  tokens this account contains as an escrow and which can be reclaimed by the
+  depositor. In our environment, both balances have 100 billion tokens.
+* Any outgoing transaction of the account must have an incremental `nonce`. In
+  our case, the next outgoing transaction of the account will have `nonce: 0`.
 
 ## Example: Burning tokens
 
-We will generate and sign a *burn* transaction which destroys the given number
-of account's tokens. To generate a burn transaction of 2000 tokens and store
-it to file `b.json`, type:
+We will generate and sign our first transaction. Let's start with *burn*
+transaction which destroys the given number of account's tokens. To generate a
+burn transaction of 2000 tokens, sign and store the transaction to file `b.json`,
+type:
 ```bash
 $ ./go/oasis-node/oasis-node stake account gen_burn \
     --stake.transaction.amount 2000 \
     --stake.transaction.file b.json \
     --stake.transaction.nonce 0 \
+    --stake.transaction.fee.gas 1000 \
+    --stake.transaction.fee.amount 1 \
     --debug.test_entity
 ```
 
@@ -107,13 +118,13 @@ We used the following parameters:
 JSON format,
 * `--stake.transaction.nonce` the incremental nonce. Since this is our first
 transaction which changes the account balance, `nonce` equals `0`,
+* `--stake.transaction.fee.gas` is the maximum amount of gas we allow this
+  transaction to spend,
+* `--stake.transaction.fee.amount` is the fee in tokens we will pay for this
+  transaction,
 * `--debug.test_entity` will sign the transaction using the test entity account.
-
-Alternatively, user can put `--entity` and the directory containing `entity.json`
-with a private key used for signing.
-
-TODO: Instructions for signing transactions using HSM (Yubi, Ledger, Trezor)
-once it is implemented.
+  If you are running a validator node, you should use `--entity` instead and the
+  directory containing `entity.json` with your private key.
 
 The above generation and signing of the transaction is done offline. To submit
 our transaction however, we need to connect to our local Oasis node:
@@ -139,7 +150,10 @@ $ ./go/oasis-node/oasis-node stake account info \
 {"id":"TqUyj5Q+9vZtqu10yw6Zw7HEX3Ywe0JQA9vHyzY47TU=","general_balance":"99999998000","escrow_balance":"100000000000","nonce":0}
 ```
 
-Notice `2000` tokens have been deducted from the `general_balance`. 
+Usually, the new balance is seen immediately, but some transactions (for example
+escrow reclaiming) requires a debonding period so you might need to wait a few
+blocks for the balances to update. Notice that `2000` tokens have been deducted
+from the `general_balance` in our case.  
 
 ## Example: Transferring tokens
 
@@ -152,6 +166,8 @@ $ ./go/oasis-node/oasis-node stake account gen_transfer \
  --stake.transaction.file t.json \
  --stake.transaction.nonce 1 \
  --stake.transfer.destination 5ea5328f943ef6f66daaed74cb0e99c3b1c45f76307b425003dbc7cb3638ed35 \
+ --stake.transaction.fee.gas 1000 \
+ --stake.transaction.fee.amount 1 \
  --debug.test_entity
 ```
 
@@ -162,7 +178,8 @@ We used similar parameters to the ones used for generating the burn transaction:
 second transaction on the account, thus `nonce` equals `1`,
 * `--stake.transfer.destination` is a hex-encoded address of the receiving
 account of tokens,
-* `--debug.test_entity` will sign the transaction using the test entity account.
+* `--debug.test_entity`, `--stake.transaction.fee.gas`, and `--stake.transaction.fee.amount`
+  behave the same as before.
 
 Let's submit the transaction stored in `t.json`:
 
@@ -196,6 +213,8 @@ $ ./go/oasis-node/oasis-node stake account gen_escrow \
  --stake.transaction.file e.json \
  --stake.transaction.nonce 2 \
  --stake.escrow.account 6ea5328f943ef6f66daaed74cb0e99c3b1c45f76307b425003dbc7cb3638ed35 \
+ --stake.transaction.fee.gas 1000 \
+ --stake.transaction.fee.amount 1 \
  --debug.test_entity
 ```
 
@@ -221,6 +240,8 @@ $ ./go/oasis-node/oasis-node stake account gen_reclaim_escrow \
     --stake.transaction.file r.json \
     --stake.transaction.nonce 3 \
     --stake.escrow.account 6ea5328f943ef6f66daaed74cb0e99c3b1c45f76307b425003dbc7cb3638ed35 \
+    --stake.transaction.fee.gas 1000 \
+    --stake.transaction.fee.amount 1 \
     --debug.test_entity
 ```
 
@@ -237,7 +258,5 @@ $ ./go/oasis-node/oasis-node stake list -a $ADDR -v
  ```
 
 Notice 3000 tokens have been reclaimed by the first account from the third
-account's `escrow_balance`.
-
-TODO: Why is the third account still shown? It does not have a positive balance
-anymore?!
+account's `escrow_balance`. The `general_balance` of the first accound is
+correctly updated and the `escrow_balance` of the third account is now empty.
