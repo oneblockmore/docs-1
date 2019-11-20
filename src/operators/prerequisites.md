@@ -12,7 +12,13 @@ operations.
 
 Although highly suggested, building from source is currently beyond the scope of
 the documentation. See [oasis-core](https://github.com/oasislabs/oasis-core) for
-details.
+details. Note, however, that the current working branch may not be the master branch. 
+The current working version can be found [here](./current-testnet-parameters.md). Be sure to 
+checkout the working branch before building. E.g. 
+
+```bash
+$ git checkout 1f6d2de0688998712cba3f642e68ae70075b4d93
+```
 
 As the release management of our open source repositories improves, we will
 provide further details to so that building a specific version can be done in a

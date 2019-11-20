@@ -64,7 +64,7 @@ This will be needed later when generating transactions.
 ### Initializing an Entity
 
 The entity, as [described
-here](../architectural-overview.md#entities-and-key-management) is critical to
+here](./architectural-overview.md#entities-and-key-management) is critical to
 operating nodes on the network as it controls the stake attached to a given
 individual or organization on the network. In the future we will support using
 entity keys through HSMs to ensure that entity keys cannot be easily
@@ -95,7 +95,7 @@ This will generate 3 files in `/localhostdir/entity`
 A node registers itself to the network when the node starts up. However, in
 order to validate itself, the entity signs a public key associated to the
 node. This allows the node registration to happen without the uploading entity key
-to the internet. To initialize a validator node, run the following from
+to the internet. To initialize a validator node, take note of the static IP of the server where your node will run, and issue the following commands from
 the `/localhostdir/node` directory.
 
 ```bash
