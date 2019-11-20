@@ -318,8 +318,7 @@ tendermint:
     listen_address: tcp://0.0.0.0:26656
 
     # The external_address option is used when registering this node to the
-    # network. If you are using a sentry node then this should be the public
-    # ip of the sentry node.
+    # network. If using the Sentry node setup this should be skipped.
     external_address: tcp://{{ external_address }}:26656
 
   db:
