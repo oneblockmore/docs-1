@@ -48,16 +48,25 @@ module.exports = {
     ],
     sidebar: [
       '/overview',
-      '/quickstart',
       {
-        title: 'Tutorials',
+        title: 'App Developer Docs',
         collapsable: true,
         children: [
-          ['/tutorials/ballot', 'Beginner: Secret Ballot'],
-          ['/tutorials/messaging', 'Intermediate: Private Chat'],
-          ['/tutorials/web3-intro', 'Getting Started With Web3'],
-          ['/tutorials/deploy-solidity', 'Deploy Solidity Contract: Compound'],
-          ['/tutorials/deploy-vyper', 'Deploy Vyper Contract: Uniswap'],
+          ['/quickstart', 'Quickstart'],
+          {
+            title: 'Tutorials',
+            collapsable: true,
+            children: [
+              ['/tutorials/ballot', 'Beginner: Secret Ballot'],
+              ['/tutorials/messaging', 'Intermediate: Private Chat'],
+              ['/tutorials/web3-intro', 'Getting Started With Web3'],
+              [
+                '/tutorials/deploy-solidity',
+                'Deploy Solidity Contract: Compound',
+              ],
+              ['/tutorials/deploy-vyper', 'Deploy Vyper Contract: Uniswap'],
+            ],
+          },
         ],
       },
       {
